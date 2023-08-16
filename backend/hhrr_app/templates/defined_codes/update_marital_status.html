@@ -1,0 +1,49 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <strong>ESTADO CIVIL</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="container">
+                        <div class="my-50" style="margin-top: 20px">
+                            <form class="row g-3"
+                                action="{{url_for('defined_codes.update_marital_status',ccn_marital_status=ccn_marital_status) }}"
+                                method="POST" enctype="multipart/form-data">
+                                {{ form.hidden_tag() }}
+
+                                <div class="col-md-6">
+                                    {{ form.marital_status.label(class="text-dark") }} {{
+                                    form.marital_status(class="form-control") }} {% for error
+                                    in form.marital_status.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12">
+                                    <a href="/defined_codes.defined_codes_marital_status"></a>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Cerrar
+                                    </button>
+                                    {{ form.submit(class="btn btn-success") }} {% for error in
+                                    form.submit.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

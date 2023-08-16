@@ -1,0 +1,5878 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"description": "This API provides the Plena Global Holdings software development team with the necessary knowledge base for the integration of the different applications with the services offered by the human resources department.",
+		"version": "1.0.0",
+		"title": "HUMMAN RESOURCES DEPARTMENT API",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"servers": [
+		{
+			"url": "/api/v1/"
+		}
+	],
+	"components": {
+		"schemas": {
+			"tbl_employee": {
+				"type": "object",
+				"properties": {
+					"ccn_employee": {
+						"type": "integer",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_type_id": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identified the type of identification that a person has (*) Obligatorio"
+					},
+					"number_id_employee": {
+						"type": "number",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1007097517,
+						"description": "Numero entero (*) Obligatorio"
+					},
+					"first_name_employee": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "Joseph",
+						"description": "Primer nombre del empleado (*) Obligatorio"
+					},
+					"middle_name_employee": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "G",
+						"description": "Segundo nombre del empleado"
+					},
+					"first_last_name_employee": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "Ruiz",
+						"description": "Primer apellido del empleado (*) Obligatorio"
+					},
+					"second_last_name_employee": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "IT",
+						"description": "Segundo apellido del empleado (*) Obligatorio"
+					},
+					"full_name_employee": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "Joseph G Ruiz IT",
+						"description": "Nombre completo del empleado generado automaticamente por el sistema"
+					},
+					"date_birth_employee": {
+						"type": "date",
+						"example": "1990-04-14",
+						"description": "Fecha de nacimiento del empleado (*) Obligatorio"
+					},
+					"age": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 100,
+						"example": 32,
+						"description": "Edad del trabajador generado automaticamente por el sistema"
+					},
+					"age_range": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Numero entero que representa un codigo definido en la base de datos en la tabla tbl_age_range generado automaticamente por el sistema"
+					},
+					"auto_perceived_gender": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"rh": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"employee_personal_email": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"informed_consent_law_1581": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"image": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"employee_password": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"last_message_read_time": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"employee_personal_cellphone": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					}
+				}
+			},
+			"tbl_demographic_data": {
+				"type": "object",
+				"properties": {
+					"ccn_demographic_data": {
+						"type": "integer",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_employee": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_employee"
+					},
+					"birth_department": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_department"
+					},
+					"birth_city": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_city"
+					},
+					"department_residence": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_department"
+					},
+					"city_residence": {
+						"type": "number",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_city"
+					},
+					"ccn_schooling_level": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_schooling_level"
+					},
+					"ccn_race": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_race"
+					},
+					"is_head_of_household": {
+						"type": "date",
+						"example": "1990-04-14",
+						"description": "Check list for save if the employee is head of household"
+					}
+				}
+			},
+			"tbl_emergency_contact_details": {
+				"type": "object",
+				"properties": {
+					"ccn_emergency_contact_details": {
+						"type": "integer",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_employee": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_employee"
+					},
+					"emergency_contact": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": "Jose Ruiz",
+						"example": 1,
+						"description": "Contact name for the emergency contact"
+					},
+					"ccn_relationship": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Relation type for the emergency contact"
+					},
+					"cellphone": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 3203272856,
+						"description": "Contact number of emergency contact"
+					}
+				}
+			},
+			"tbl_employment_relationship": {
+				"type": "object",
+				"properties": {
+					"ccn_employment_relationship": {
+						"type": "integer",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_employee": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign Key with the table tbl_employee"
+					},
+					"ccn_role": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign Key with the table tbl_roles"
+					},
+					"ccn_work_shift": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign Key with the table tbl_work_shift"
+					},
+					"binding_date": {
+						"type": "date",
+						"minimum": "",
+						"maximum": "",
+						"example": "2022-06-16",
+						"description": "The date on which the employee joined the company"
+					},
+					"termination_date": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "Ruiz",
+						"description": "The date the employee ends the contract with the company."
+					},
+					"time_worked": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 255,
+						"example": "0 AÑOS, 6 MESES Y 9 DIAS, TOTAL EN DIAS = 193",
+						"description": "Years, months, days and total days worked to the date"
+					},
+					"days_taken_on_vacation": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "7",
+						"description": "Days taken on vacation"
+					},
+					"ccn_type_relationship": {
+						"type": "date",
+						"example": "1990-04-14",
+						"description": "Foreign Key with the table tbl_type_relationship"
+					},
+					"employee_corporate_email": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 100,
+						"example": 32,
+						"description": "Edad del trabajador generado automaticamente por el sistema"
+					},
+					"employee_corporate_cellphone": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 3015195528,
+						"description": "Corporative Phone number from employee"
+					},
+					"immediate_boss": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "jgalindo@plena.global",
+						"description": "Corporative E-mail from employee"
+					}
+				}
+			},
+			"tbl_family_nucleus": {
+				"type": "object",
+				"properties": {
+					"ccn_family_nucleus": {
+						"type": "integer",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_employee": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_employee"
+					},
+					"ccn_marital_status": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": "Jose Ruiz",
+						"example": 1,
+						"description": "Foreign key with table tbl_martial_status"
+					},
+					"number_of_children": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Quantity of childrens"
+					},
+					"ccn_type_id": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Type of document of child"
+					},
+					"number_id": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 98056369,
+						"description": "Number ID from child"
+					},
+					"ccn_auto_perceived_gender": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_auto_perceived_gender"
+					},
+					"first_name": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Juan",
+						"description": "First name from child"
+					},
+					"middle_name": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Andres",
+						"description": "Middle name from child"
+					},
+					"first_last_name": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Rincon",
+						"description": "First last name from child"
+					},
+					"second_last_name": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Guevara",
+						"description": "Scecond last name from child"
+					},
+					"date_of_birth": {
+						"type": "date",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "1990-04-14",
+						"description": "Date of birth"
+					},
+					"age": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 5,
+						"description": "Age from child"
+					},
+					"age_range": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "20-24",
+						"description": "Age range from child"
+					},
+					"ccn_schooling_level": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_schooling_level"
+					}
+				}
+			},
+			"tbl_health_condition": {
+				"type": "object",
+				"properties": {
+					"ccn_health_condition": {
+						"type": "integer",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_employee": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_employees"
+					},
+					"consume_alcoholic_beverages": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "selectable field if the employee consumes alcoholic beverages"
+					},
+					"ccn_diseases": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_diseases"
+					},
+					"allergies": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "selectable field if the employee have allergies"
+					},
+					"what_allergy": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Polvo",
+						"description": "field to describe that allergies have the employee"
+					},
+					"medicines": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "selectable field if the employee have medicines"
+					},
+					"what_medicin": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "",
+						"description": "field to describe that medicines have the employee"
+					},
+					"last_medical_consultation": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Hace mas de 6 meses",
+						"description": "selectable field with the last medical consultation"
+					},
+					"plan_to_drink_less_alcoholic_beverages": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Not",
+						"description": "Selectable field if the employee plans to stop drinking"
+					},
+					"discomfort_due_to_criticism_when_ingesting_alcohol": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "Selectable field if the employee disagrees with the way they drink alcohol"
+					},
+					"need_to_drink_alcohol_in_the_morning": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "Selectable field if the employee need to drink alcohol in the morning"
+					},
+					"physical_activity_3_times_a_week_30_minutes": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "Selectable field if the employee realize physical activity 3 times a week 30 minutes"
+					},
+					"he_is_a_smoker": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "Selectable field if the employee is a smoker"
+					},
+					"how_many_cigarettes_a_day": {
+						"type": "number",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 2,
+						"description": "How many cigarettes a day"
+					},
+					"he_is_ex_smoker": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "Selectable field if the employee is ex smoker"
+					},
+					"consume_psychoactive_substances": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "Selectable field if the employee consume psychoactive substances"
+					},
+					"used_psychoactive_substances_before": {
+						"type": "string",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": "Yes",
+						"description": "Selectable field if the employee used psychoactive substances before"
+					},
+					"what_psychoactive_substances": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10000,
+						"example": 1,
+						"description": "field by what psychoactive substances"
+					}
+				}
+			},
+			"tbl_sociodemographic_data": {
+				"type": "object",
+				"properties": {
+					"ccn_sociodemographic_data": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_type_id": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key for table tbl_type_id"
+					},
+					"ccn_employee": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1007097517,
+						"description": "Foreign key for table tbl_employee"
+					},
+					"other_dependents": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1007097517,
+						"description": "field that stores whether other people depend on the employee"
+					},
+					"relatives": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 2,
+						"description": "numero de pesonas en el hogar"
+					},
+					"people_with_disabilities": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 0,
+						"description": "numero de personas en situacion de discapacidad en el hogar"
+					},
+					"monthly_income": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "yes",
+						"description": "Ingreso familiar en SMLMV"
+					},
+					"is_income_enougth": {
+						"type": "number",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1007097517,
+						"description": "Campo seleccionable que indica si los ingresos alcanzan"
+					},
+					"ccn_sub_house_type": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "APARTAMENTO",
+						"description": "Tipo de vivienda del empleado"
+					},
+					"ccn_house_type": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "ARRENDADA",
+						"description": "Caracteristicas de la vivienda"
+					},
+					"where_its_located": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "RURAL",
+						"description": "en que zona esta localizada la vivienda"
+					},
+					"residence_address": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "Cra 5 # 84 -15 torre 1 apto 1001",
+						"description": "Direccion de residencia"
+					},
+					"type_transportation": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "RUTA",
+						"description": "Tipo de transporte en el que va para el trabajo"
+					},
+					"type_transportation_2": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "CARRO",
+						"description": "Tipo de transporte opcional en el que va al trabajo"
+					},
+					"social_stratum": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 3,
+						"description": "Estati social"
+					},
+					"electric_power": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Tiene luz en casa"
+					},
+					"sewerage": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Si la zona cuenta con alcantillado"
+					},
+					"aqueduct": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Si la zona cuenta con acueducto"
+					},
+					"natural_gas": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Si la vivenda cuenta con gas natural"
+					},
+					"garbage_collection": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Reciclaje "
+					},
+					"landline": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Si cuentan con telefono fijo en la casa"
+					},
+					"debts": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "NO",
+						"description": "Si tiene deudas"
+					},
+					"debt_refinancing": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Si desea refinanciar las deudas"
+					},
+					"computer_at_home": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "si cuenta con computador en la casa"
+					},
+					"have_internet_access": {
+						"type": "string",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": "YES",
+						"description": "Si cuenta con internet en casa"
+					}
+				}
+			},
+			"tbl_type_id": {
+				"type": "object",
+				"properties": {
+					"ccn_employee": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_type_id": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Integer that identifies the type of identification that a person has"
+					},
+					"number_id_employee": {
+						"type": "number",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1007097517,
+						"description": "Numero entero "
+					}
+				}
+			},
+			"tbl_ss_employee": {
+				"type": "object",
+				"properties": {
+					"ccn_ss_employee": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_type_affiliation": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_type_affiliation"
+					},
+					"ccn_type_contributor": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_type_contributor"
+					},
+					"ccn_eps": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_eps"
+					},
+					"ccn_afp": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_afp"
+					},
+					"ccn_arl": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_arl"
+					},
+					"ccn_ccf": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_ccf"
+					},
+					"ccn_aap": {
+						"type": "integer",
+						"minimum": 10,
+						"maximum": 10000,
+						"example": 1,
+						"description": "Foreign key with table tbl_aap"
+					}
+				}
+			},
+			"tbl_age_range": {
+				"type": "object",
+				"properties": {
+					"ccn_age_range": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"age_range": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "00-05",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_auto_perceived_gender": {
+				"type": "object",
+				"properties": {
+					"ccn_auto_perceived_gender": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"auto_perceived_gender": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "Femenino",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_role": {
+				"type": "object",
+				"properties": {
+					"ccn_role": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"area": {
+						"type": "string",
+						"minimum": 0,
+						"maximum": 50,
+						"example": "HUMAN RESOURCES",
+						"description": "String Field"
+					},
+					"role": {
+						"type": "string",
+						"minimum": 0,
+						"maximum": 50,
+						"example": "GENERAL SERVICES WORKER",
+						"description": "String Field"
+					},
+					"process": {
+						"type": "string",
+						"minimum": 0,
+						"maximum": 50,
+						"example": "HUMAN RESOURCES",
+						"description": "String Field"
+					},
+					"full_role": {
+						"type": "string",
+						"minimum": 0,
+						"maximum": 250,
+						"example": "HUMAN RESOURCES - HUMAN RESOURCES",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_work_shift": {
+				"type": "object",
+				"properties": {
+					"ccn_work_shift": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"description_work_shift": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "8 HORAS",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_aap": {
+				"type": "object",
+				"properties": {
+					"ccn_aap": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"code_aap": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"nit_aap": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"dig_ver": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"description_aap": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_afp": {
+				"type": "object",
+				"properties": {
+					"ccn_afp": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"code_afp": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"nit_afp": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"dig_ver": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"description_afp": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_arl": {
+				"type": "object",
+				"properties": {
+					"ccn_type_relationship": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"code_arl": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"nit_arl": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"dig_ver": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"description_arl": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_ccf": {
+				"type": "object",
+				"properties": {
+					"ccn_ccf": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"code_ccf": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"nit_ccf": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"dig_ver": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"description_ccf": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_type_relationship": {
+				"type": "object",
+				"properties": {
+					"ccn_type_relationship": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"description_type_relationship": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_type_contributor": {
+				"type": "object",
+				"properties": {
+					"ccn_type_contributor": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"contributor_code": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"description_type_contributor": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_type_affiliation": {
+				"type": "object",
+				"properties": {
+					"ccn_type_affiliation": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"affiliation_code": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"description_type_affiliation": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_eps": {
+				"type": "object",
+				"properties": {
+					"ccn_eps": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"code_eps": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"code_sgp_eps": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"nit_eps": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"dig_ver": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					},
+					"description_eps": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "DIRECTO",
+						"description": "String Field"
+					}
+				}
+			},
+			"tbl_country": {
+				"type": "object",
+				"properties": {
+					"ccn_country": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"id_country": {
+						"type": "Integer",
+						"minimum": 1,
+						"maximum": 40,
+						"example": 50,
+						"description": "Dian Code Country"
+					},
+					"description_country": {
+						"type": "string",
+						"minimum": 0,
+						"maximum": 100,
+						"example": "COLOMBIA",
+						"description": "Country name"
+					}
+				}
+			},
+			"tbl_department": {
+				"type": "object",
+				"properties": {
+					"ccn_department": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"id_department": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 10000,
+						"example": 11,
+						"description": "DIAN idintification number"
+					},
+					"descripcion_department": {
+						"type": "string",
+						"example": "CUNDINAMARCA",
+						"description": "department name from employee"
+					},
+					"ccn_country": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 40,
+						"example": 1,
+						"description": "Foreign key with the table tbl_countrys"
+					}
+				}
+			},
+			"tbl_city": {
+				"type": "object",
+				"properties": {
+					"ccn_city": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"id_city": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 40,
+						"example": 5001,
+						"description": "DIAN identification city name"
+					},
+					"description_city": {
+						"type": "string",
+						"example": "BOGOTA D.C",
+						"description": "City name"
+					},
+					"ccn_department": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 40,
+						"example": 1,
+						"description": "Foreign key with the table tbl_departments"
+					}
+				}
+			},
+			"tbl_schooling_level": {
+				"type": "object",
+				"properties": {
+					"ccn_schooling_level": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"description_schooling_level": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 40,
+						"example": 5001,
+						"description": "DIAN identification city name"
+					}
+				}
+			},
+			"tbl_race": {
+				"type": "object",
+				"properties": {
+					"ccn_race": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"description_race": {
+						"type": "string",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "POSTGRADO",
+						"description": "Employee schooling level"
+					}
+				}
+			},
+			"tbl_house_type": {
+				"type": "object",
+				"properties": {
+					"ccn_house_type": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"house_type": {
+						"type": "string",
+						"minimum": 0,
+						"maximum": 40,
+						"example": "ARRENDADA",
+						"description": "Employee house type"
+					}
+				}
+			},
+			"tbl_subhouse_type": {
+				"type": "object",
+				"properties": {
+					"ccn_subhouse_type": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"description_subhouse_type": {
+						"type": "string",
+						"example": "APARTAMENTO",
+						"description": "Employee subhouse type"
+					}
+				}
+			},
+			"tbl_marital_status": {
+				"type": "object",
+				"properties": {
+					"ccn_marital_status": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"marital_status": {
+						"type": "string",
+						"example": "SOLTERO",
+						"description": "Employee martial status"
+					}
+				}
+			},
+			"tbl_diseases": {
+				"type": "object",
+				"properties": {
+					"ccn_diseases": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"diseases": {
+						"type": "string",
+						"example": "DIABETES",
+						"description": "Type of diseases"
+					}
+				}
+			},
+			"tbl_message": {
+				"type": "object",
+				"properties": {
+					"ccn_message": {
+						"type": "integer (pk) auto_increment",
+						"example": 1,
+						"description": "Incremental integer number assigned by the system automatically when recording a new record."
+					},
+					"ccn_sender": {
+						"type": "string",
+						"example": "PENDING",
+						"description": "PENDING"
+					},
+					"title_message": {
+						"type": "string",
+						"example": "PENDING",
+						"description": "PENDING"
+					},
+					"body_message": {
+						"type": "string",
+						"example": "PENDING",
+						"description": "PENDING"
+					},
+					"time_stamp": {
+						"type": "string",
+						"example": "PENDING",
+						"description": "PENDING"
+					}
+				}
+			}
+		}
+	},
+	"paths": {
+		"/employee": {
+			"post": {
+				"tags": [
+					"Datos basicos del empleado"
+				],
+				"description": "Crea un nuevo empleado en la plataforma de recursos humanos",
+				"requestBody": {
+					"description": "Post New employee to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_employee"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Datos basicos del empleado"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					}
+				}
+			}
+		},
+		"/employee/{ccn_employee}": {
+			"get": {
+				"tags": [
+					"Datos basicos del empleado"
+				],
+				"parameters": [
+					{
+						"name": "ccn_employee",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Datos basicos del empleado"
+				],
+				"parameters": [
+					{
+						"name": "ccn_employee",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_employee"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Datos basicos del empleado"
+				],
+				"parameters": [
+					{
+						"name": "ccn_employee",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employee"
+						}
+					}
+				}
+			}
+		},
+		"/type_id": {
+			"post": {
+				"tags": [
+					"Basic data from identification type"
+				],
+				"description": "Create a new type id in the human resources platform",
+				"requestBody": {
+					"description": "Post New employee to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_id"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from identification type"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					}
+				}
+			}
+		},
+		"/type_id/{ccn_type_id}": {
+			"get": {
+				"tags": [
+					"Basic data from identification type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_id",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from identification type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_id",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_id"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from identification type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_id",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_id"
+						}
+					}
+				}
+			}
+		},
+		"/auto_perceived_gender": {
+			"post": {
+				"tags": [
+					"Basic data from auto perceived gender"
+				],
+				"description": "Create a new gender in the human resources platform",
+				"requestBody": {
+					"description": "Post New gender to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from auto perceived gender"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					}
+				}
+			}
+		},
+		"/auto_perceived_gender/{ccn_auto_perceived_gender}": {
+			"get": {
+				"tags": [
+					"Basic data from auto perceived gender"
+				],
+				"parameters": [
+					{
+						"name": "ccn_auto_perceived_gender",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from auto perceived gender"
+				],
+				"parameters": [
+					{
+						"name": "ccn_auto_perceived_gender",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from auto perceived gender"
+				],
+				"parameters": [
+					{
+						"name": "ccn_auto_perceived_gender",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_auto_perceived_gender"
+						}
+					}
+				}
+			}
+		},
+		"/age_range": {
+			"post": {
+				"tags": [
+					"Basic data from age range"
+				],
+				"description": "Create a new age range in the human resources platform",
+				"requestBody": {
+					"description": "Post New age range to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_age_range"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from age range"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					}
+				}
+			}
+		},
+		"/age_range/{ccn_age_range}": {
+			"get": {
+				"tags": [
+					"Basic data from age range"
+				],
+				"parameters": [
+					{
+						"name": "ccn_age_range",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from age range"
+				],
+				"parameters": [
+					{
+						"name": "ccn_age range",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_age_range"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from age range"
+				],
+				"parameters": [
+					{
+						"name": "ccn_age_range",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_age_range"
+						}
+					}
+				}
+			}
+		},
+		"/type_relationship": {
+			"post": {
+				"tags": [
+					"Basic data from type relationship"
+				],
+				"description": "Create a new tyoe relationship to human resource platform",
+				"requestBody": {
+					"description": "Post New type relationship to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_relationship"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from type relationship"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					}
+				}
+			}
+		},
+		"/type_relationship/{ccn_type_relationship}": {
+			"get": {
+				"tags": [
+					"Basic data from type relationship"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_relationship",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from type relationship"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_relationship",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_relationship"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from type relationship"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_relationship",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_relationship"
+						}
+					}
+				}
+			}
+		},
+		"/work_shift": {
+			"post": {
+				"tags": [
+					"Basic data from work shift"
+				],
+				"description": "Create a new work shift to human resource platform",
+				"requestBody": {
+					"description": "Post New work shift to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_work_shift"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from work shift"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					}
+				}
+			}
+		},
+		"/work_shift/{ccn_work_shift}": {
+			"get": {
+				"tags": [
+					"Basic data from work shift"
+				],
+				"parameters": [
+					{
+						"name": "ccn_work_shift",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from work shift"
+				],
+				"parameters": [
+					{
+						"name": "ccn_work_shift",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_work_shift"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from work shift"
+				],
+				"parameters": [
+					{
+						"name": "ccn_work_shift",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_work_shift"
+						}
+					}
+				}
+			}
+		},
+		"/role": {
+			"post": {
+				"tags": [
+					"Basic data from role"
+				],
+				"description": "Create a new role to human resource platform",
+				"requestBody": {
+					"description": "Post New role to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_role"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from role"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					}
+				}
+			}
+		},
+		"/role/{ccn_role}": {
+			"get": {
+				"tags": [
+					"Basic data from role"
+				],
+				"parameters": [
+					{
+						"name": "ccn_role",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from role"
+				],
+				"parameters": [
+					{
+						"name": "ccn_role",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_role"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from role"
+				],
+				"parameters": [
+					{
+						"name": "ccn_role",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_role"
+						}
+					}
+				}
+			}
+		},
+		"/employment_relationship": {
+			"post": {
+				"tags": [
+					"Basic data from employee relationship"
+				],
+				"description": "Create a new employee relationship to human resource platform",
+				"requestBody": {
+					"description": "Post New employee relationship to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_employment_relationship"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from employee relationship"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					}
+				}
+			}
+		},
+		"/employment_relationship/{ccn_employment_relationship}": {
+			"get": {
+				"tags": [
+					"Basic data from employee relationship"
+				],
+				"parameters": [
+					{
+						"name": "ccn_employment_relationship",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from employee relationship"
+				],
+				"parameters": [
+					{
+						"name": "ccn_employment_relationship",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_employment_relationship"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from employee relationship"
+				],
+				"parameters": [
+					{
+						"name": "ccn_employment_relationship",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_employment_relationship"
+						}
+					}
+				}
+			}
+		},
+		"/ss_employee": {
+			"post": {
+				"tags": [
+					"Basic data from ss employee"
+				],
+				"description": "Create a new ss employee to human resource platform",
+				"requestBody": {
+					"description": "Post New ss employee to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_ss_employee"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from ss employee"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					}
+				}
+			}
+		},
+		"/ss_employee/{ccn_ss_employee}": {
+			"get": {
+				"tags": [
+					"Basic data from ss employee"
+				],
+				"parameters": [
+					{
+						"name": "ccn_ss_employee",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from ss employee"
+				],
+				"parameters": [
+					{
+						"name": "ccn_ss_employee",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_ss_employee"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from ss employee"
+				],
+				"parameters": [
+					{
+						"name": "ccn_ss_employee",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ss_employee"
+						}
+					}
+				}
+			}
+		},
+		"/sociodemographic_data": {
+			"post": {
+				"tags": [
+					"Basic data from sociodemographic data"
+				],
+				"description": "Create a new sociodemographic data to human resource platform",
+				"requestBody": {
+					"description": "Post New sociodemographic data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_sociodemographic_data"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from sociodemographic data"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					}
+				}
+			}
+		},
+		"/sociodemographic_data/{ccn_sociodemographic_data}": {
+			"get": {
+				"tags": [
+					"Basic data from sociodemographic data"
+				],
+				"parameters": [
+					{
+						"name": "ccn_sociodemographic_data",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from sociodemographic data"
+				],
+				"parameters": [
+					{
+						"name": "ccn_sociodemographic_data",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_sociodemographic_data"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from sociodemographic data"
+				],
+				"parameters": [
+					{
+						"name": "ccn_sociodemographic_data",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_sociodemographic_data"
+						}
+					}
+				}
+			}
+		},
+		"/health_condition": {
+			"post": {
+				"tags": [
+					"Basic data from health condition"
+				],
+				"description": "Create a health condition data to human resource platform",
+				"requestBody": {
+					"description": "Post health condition data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_health_condition"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from health condition"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					}
+				}
+			}
+		},
+		"/health_condition/{ccn_health_condition}": {
+			"get": {
+				"tags": [
+					"Basic data from health condition"
+				],
+				"parameters": [
+					{
+						"name": "ccn_health_condition",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from health condition"
+				],
+				"parameters": [
+					{
+						"name": "ccn_health_condition",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_health_condition"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from health condition"
+				],
+				"parameters": [
+					{
+						"name": "ccn_health_condition",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_health_condition"
+						}
+					}
+				}
+			}
+		},
+		"/demographic_data": {
+			"post": {
+				"tags": [
+					"Basic data from demographic data"
+				],
+				"description": "Create a demographic data data to human resource platform",
+				"requestBody": {
+					"description": "Post demographic data data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_demographic_data"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from demographic data"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					}
+				}
+			}
+		},
+		"/demographic_data/{ccn_demographic_data}": {
+			"get": {
+				"tags": [
+					"Basic data from demographic data"
+				],
+				"parameters": [
+					{
+						"name": "ccn_demographic_data",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from demographic data"
+				],
+				"parameters": [
+					{
+						"name": "ccn_demographic_data",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_demographic_data"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from demographic data"
+				],
+				"parameters": [
+					{
+						"name": "ccn_demographic_data",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_demographic_data"
+						}
+					}
+				}
+			}
+		},
+		"/emergency_contact_details": {
+			"post": {
+				"tags": [
+					"Basic data from emergency contact details"
+				],
+				"description": "Create a emergency contact details data to human resource platform",
+				"requestBody": {
+					"description": "Post emergency contact details data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_emergency_contact_details"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from emergency contact details"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					}
+				}
+			}
+		},
+		"/emergency_contact_details/{ccn_emergency_contact_details}": {
+			"get": {
+				"tags": [
+					"Basic data from emergency contact details"
+				],
+				"parameters": [
+					{
+						"name": "ccn_emergency_contact_details",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from emergency contact details"
+				],
+				"parameters": [
+					{
+						"name": "ccn_emergency_contact_details",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_emergency_contact_details"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from emergency contact details"
+				],
+				"parameters": [
+					{
+						"name": "ccn_emergency_contact_details",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_emergency_contact_details"
+						}
+					}
+				}
+			}
+		},
+		"/family_nucleus": {
+			"post": {
+				"tags": [
+					"Basic data from family nucleus"
+				],
+				"description": "Create a family nucleus details data to human resource platform",
+				"requestBody": {
+					"description": "Post family nucleus details data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_family_nucleus"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from family nucleus"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					}
+				}
+			}
+		},
+		"/family_nucleus/{ccn_family_nucleus}": {
+			"get": {
+				"tags": [
+					"Basic data from family nucleus"
+				],
+				"parameters": [
+					{
+						"name": "ccn_family_nucleus",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from family nucleus"
+				],
+				"parameters": [
+					{
+						"name": "ccn_family_nucleus",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_family_nucleus"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from family nucleus"
+				],
+				"parameters": [
+					{
+						"name": "ccn_family_nucleus",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_family_nucleus"
+						}
+					}
+				}
+			}
+		},
+		"/aap": {
+			"post": {
+				"tags": [
+					"Basic data from AAP"
+				],
+				"description": "Create a AAP data to human resource platform",
+				"requestBody": {
+					"description": "Post AAP data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_aap"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from AAP"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					}
+				}
+			}
+		},
+		"/aap/{ccn_aap}": {
+			"get": {
+				"tags": [
+					"Basic data from AAP"
+				],
+				"parameters": [
+					{
+						"name": "ccn_aap",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from AAP"
+				],
+				"parameters": [
+					{
+						"name": "ccn_aap",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_aap"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from AAP"
+				],
+				"parameters": [
+					{
+						"name": "ccn_aap",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_aap"
+						}
+					}
+				}
+			}
+		},
+		"/afp": {
+			"post": {
+				"tags": [
+					"Basic data from AFP"
+				],
+				"description": "Create a AFP data to human resource platform",
+				"requestBody": {
+					"description": "Post AFP data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_afp"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from AFP"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					}
+				}
+			}
+		},
+		"/afp/{ccn_afp}": {
+			"get": {
+				"tags": [
+					"Basic data from AFP"
+				],
+				"parameters": [
+					{
+						"name": "ccn_afp",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from AFP"
+				],
+				"parameters": [
+					{
+						"name": "ccn_afp",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_afp"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from AFP"
+				],
+				"parameters": [
+					{
+						"name": "ccn_afp",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_afp"
+						}
+					}
+				}
+			}
+		},
+		"/arl": {
+			"post": {
+				"tags": [
+					"Basic data from ARL"
+				],
+				"description": "Create a AFP data to human resource platform",
+				"requestBody": {
+					"description": "Post AFP data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_arl"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from ARL"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					}
+				}
+			}
+		},
+		"/arl/{ccn_arl}": {
+			"get": {
+				"tags": [
+					"Basic data from ARL"
+				],
+				"parameters": [
+					{
+						"name": "ccn_arl",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from ARL"
+				],
+				"parameters": [
+					{
+						"name": "ccn_arl",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_arl"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from ARL"
+				],
+				"parameters": [
+					{
+						"name": "ccn_arl",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_arl"
+						}
+					}
+				}
+			}
+		},
+		"/ccf": {
+			"post": {
+				"tags": [
+					"Basic data from CCF"
+				],
+				"description": "Create a CCF data to human resource platform",
+				"requestBody": {
+					"description": "Post CCF data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_ccf"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from CCF"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					}
+				}
+			}
+		},
+		"/ccf/{ccn_ccf}": {
+			"get": {
+				"tags": [
+					"Basic data from CCF"
+				],
+				"parameters": [
+					{
+						"name": "ccn_ccf",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from CCF"
+				],
+				"parameters": [
+					{
+						"name": "ccn_ccf",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_ccf"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from CCF"
+				],
+				"parameters": [
+					{
+						"name": "ccn_ccf",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_ccf"
+						}
+					}
+				}
+			}
+		},
+		"/eps": {
+			"post": {
+				"tags": [
+					"Basic data from EPS"
+				],
+				"description": "Create a EPS data to human resource platform",
+				"requestBody": {
+					"description": "Post EPS data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_eps"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from EPS"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					}
+				}
+			}
+		},
+		"/eps/{ccn_eps}": {
+			"get": {
+				"tags": [
+					"Basic data from EPS"
+				],
+				"parameters": [
+					{
+						"name": "ccn_eps",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from EPS"
+				],
+				"parameters": [
+					{
+						"name": "ccn_eps",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_eps"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from EPS"
+				],
+				"parameters": [
+					{
+						"name": "ccn_eps",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_eps"
+						}
+					}
+				}
+			}
+		},
+		"/type_affiliation": {
+			"post": {
+				"tags": [
+					"Basic data from Type Affiliation"
+				],
+				"description": "Create a type affiliation data to human resource platform",
+				"requestBody": {
+					"description": "Post type affiliation data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_affiliation"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Type Affiliation"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					}
+				}
+			}
+		},
+		"/type_affiliation/{ccn_type_affiliation}": {
+			"get": {
+				"tags": [
+					"Basic data from Type Affiliation"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_affiliation",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from Type Affiliation"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_affiliation",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_affiliation"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from Type Affiliation"
+				],
+				"parameters": [
+					{
+						"name": "ccn_eps",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_affiliation"
+						}
+					}
+				}
+			}
+		},
+		"/type_contributor": {
+			"post": {
+				"tags": [
+					"Basic data from Type Contributor"
+				],
+				"description": "Create a type contributor data to human resource platform",
+				"requestBody": {
+					"description": "Post type contributor data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_contributor"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Type Contributor"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					}
+				}
+			}
+		},
+		"/type_contributor/{ccn_type_contributor}": {
+			"get": {
+				"tags": [
+					"Basic data from Type Contributor"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_contributor",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from Type Contributor"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_contributor",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_type_contributor"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from Type Contributor"
+				],
+				"parameters": [
+					{
+						"name": "ccn_type_contributor",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_type_contributor"
+						}
+					}
+				}
+			}
+		},
+		"/house_type": {
+			"post": {
+				"tags": [
+					"Basic data from House Type"
+				],
+				"description": "Create a house type data to human resource platform",
+				"requestBody": {
+					"description": "Post house type data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_house_type"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from House Type"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					}
+				}
+			}
+		},
+		"/house_type/{ccn_house_type}": {
+			"get": {
+				"tags": [
+					"Basic data from House Type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_house_type",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from House Type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_house_type",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_house_type"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from House Type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_house_type",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_house_type"
+						}
+					}
+				}
+			}
+		},
+		"/marital_status": {
+			"post": {
+				"tags": [
+					"Basic data from Martial Status"
+				],
+				"description": "Create a martial status data to human resource platform",
+				"requestBody": {
+					"description": "Post martial status data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_marital_status"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Martial Status"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					}
+				}
+			}
+		},
+		"/marital_status/{ccn_marital_status}": {
+			"get": {
+				"tags": [
+					"Basic data from Martial Status"
+				],
+				"parameters": [
+					{
+						"name": "ccn_marital_status",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from Martial Status"
+				],
+				"parameters": [
+					{
+						"name": "ccn_marital_status",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_marital_status"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from Martial Status"
+				],
+				"parameters": [
+					{
+						"name": "ccn_marital_status",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_marital_status"
+						}
+					}
+				}
+			}
+		},
+		"/subhouse_type": {
+			"post": {
+				"tags": [
+					"Basic data from Subhouse Type"
+				],
+				"description": "Create a subhouse type data to human resource platform",
+				"requestBody": {
+					"description": "Post subhouse type data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_subhouse_type"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Subhouse Type"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					}
+				}
+			}
+		},
+		"/subhouse_type/{ccn_subhouse_type}": {
+			"get": {
+				"tags": [
+					"Basic data from Subhouse Type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_subhouse_type",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from Subhouse Type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_subhouse_type",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_subhouse_type"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from Subhouse Type"
+				],
+				"parameters": [
+					{
+						"name": "ccn_subhouse_type",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_subhouse_type"
+						}
+					}
+				}
+			}
+		},
+		"/city": {
+			"post": {
+				"tags": [
+					"Basic data from City"
+				],
+				"description": "Create a city data to human resource platform",
+				"requestBody": {
+					"description": "Post city data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_city"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from City"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					}
+				}
+			}
+		},
+		"/city/{ccn_city}": {
+			"get": {
+				"tags": [
+					"Basic data from City"
+				],
+				"parameters": [
+					{
+						"name": "ccn_city",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from City"
+				],
+				"parameters": [
+					{
+						"name": "ccn_city",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_city"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from City"
+				],
+				"parameters": [
+					{
+						"name": "ccn_city",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_city"
+						}
+					}
+				}
+			}
+		},
+		"/country": {
+			"post": {
+				"tags": [
+					"Basic data from Country"
+				],
+				"description": "Create a country data to human resource platform",
+				"requestBody": {
+					"description": "Post country data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_country"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Country"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					}
+				}
+			}
+		},
+		"/country/{ccn_country}": {
+			"get": {
+				"tags": [
+					"Basic data from Country"
+				],
+				"parameters": [
+					{
+						"name": "ccn_country",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from Country"
+				],
+				"parameters": [
+					{
+						"name": "ccn_country",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_country"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from Country"
+				],
+				"parameters": [
+					{
+						"name": "ccn_country",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_country"
+						}
+					}
+				}
+			}
+		},
+		"/department": {
+			"post": {
+				"tags": [
+					"Basic data from Department"
+				],
+				"description": "Create a department data to human resource platform",
+				"requestBody": {
+					"description": "Post department data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_department"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Department"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					}
+				}
+			}
+		},
+		"/department/{ccn_department}": {
+			"get": {
+				"tags": [
+					"Basic data from Department"
+				],
+				"parameters": [
+					{
+						"name": "ccn_department",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from Department"
+				],
+				"parameters": [
+					{
+						"name": "ccn_department",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_department"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from Department"
+				],
+				"parameters": [
+					{
+						"name": "ccn_department",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_department"
+						}
+					}
+				}
+			}
+		},
+		"/diseases": {
+			"post": {
+				"tags": [
+					"Basic data from Diseases"
+				],
+				"description": "Create a diseases data to human resource platform",
+				"requestBody": {
+					"description": "Post diseases data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_diseases"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Diseases"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					}
+				}
+			}
+		},
+		"/diseases/{ccn_diseases}": {
+			"get": {
+				"tags": [
+					"Basic data from Diseases"
+				],
+				"parameters": [
+					{
+						"name": "ccn_diseases",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from Diseases"
+				],
+				"parameters": [
+					{
+						"name": "ccn_diseases",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_diseases"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from Diseases"
+				],
+				"parameters": [
+					{
+						"name": "ccn_diseases",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_diseases"
+						}
+					}
+				}
+			}
+		},
+		"/race": {
+			"post": {
+				"tags": [
+					"Basic data from Race"
+				],
+				"description": "Create a race data to human resource platform",
+				"requestBody": {
+					"description": "Post race data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_race"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_race"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_race"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from Race"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+            "$ref": "#/components/schemas/tbl_race"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_race"
+						}
+					}
+				}
+			}
+		},
+		"/race/{ccn_race}": {
+			"get": {
+				"tags": [
+					"Basic data from Race"
+				],
+				"parameters": [
+					{
+						"name": "ccn_race",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_race"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+						"$ref": "#/components/schemas/tbl_race"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+				"Basic data from Race"
+				],
+				"parameters": [
+					{
+						"name": "ccn_race",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+              "$ref": "#/components/schemas/tbl_race"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+            "$ref": "#/components/schemas/tbl_race"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+            "$ref": "#/components/schemas/tbl_race"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+        "Basic data from Race"
+				],
+				"parameters": [
+					{
+						"name": "ccn_race",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+            "$ref": "#/components/schemas/tbl_race"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+            "$ref": "#/components/schemas/tbl_race"
+						}
+					}
+				}
+			}
+		},
+		"/schooling_level": {
+			"post": {
+				"tags": [
+					"Basic data from SchoolingLevel"
+				],
+				"description": "Create a schoolingLevel data to human resource platform",
+				"requestBody": {
+					"description": "Post schoolingLevel data to database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_schooling_level"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Basic data from SchoolingLevel"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					}
+				}
+			}
+		},
+		"/schooling_level/{ccn_schooling_level}": {
+			"get": {
+				"tags": [
+					"Basic data from SchoolingLevel"
+				],
+				"parameters": [
+					{
+						"name": "ccn_schooling_level",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Basic data from SchoolingLevel"
+				],
+				"parameters": [
+					{
+						"name": "ccn_schooling_level",
+						"in": "path",
+						"description": "todo id to update",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"requestBody": {
+					"description": "Update Existing todo On Database",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/tbl_schooling_level"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Basic data from SchoolingLevel"
+				],
+				"parameters": [
+					{
+						"name": "ccn_schooling_level",
+						"in": "path",
+						"description": "product id to delete",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/tbl_schooling_level"
+						}
+					}
+				}
+			}
+		}
+	}
+}

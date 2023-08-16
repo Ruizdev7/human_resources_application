@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+
+  backend:
+
+    build: backend
+
+    restart: always
+
+    ports:
+      - 5000:5000
+
+    networks:
+      - flask_network
+    volumes:
+      - /home/econnabis/Pictures/images:/hhrr_app/static/images/:rw
+      - ./frontend/dist:/dist:rw
+      - /etc/timezone:/etc/timezone:rw
+      - /etc/localtime:/etc/localtime
+  frontend:
+
+    build: frontend
+
+    restart: always
+
+    ports:
+      - 5173:3000
+
+    networks:
+      - flask_network
+  proxy:
+
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+
+networks:
+  flask_network:

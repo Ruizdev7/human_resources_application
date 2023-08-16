@@ -1,0 +1,221 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <strong>DATOS SOCIODEMOGRAFICOS</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="container">
+                        <div class="my-50" style="margin-top: 20px">
+                            <form class="row g-1"
+                                action="{{ url_for('db_employee.update_sociodemographic_data',ccn_sociodemographic_data=ccn_sociodemographic_data) }}"
+                                method="POST" enctype="multipart/form-data">
+                                {{ form.hidden_tag() }}
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.ccn_employee.label(class="mt-1") }} {{
+                                    form.ccn_employee(class="form-control") }} {% for error in
+                                    form.ccn_employee.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.other_dependents.label(class="mt-1") }} {{
+                                    form.other_dependents(class="form-control") }} {% for error in
+                                    form.other_dependents.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.relatives.label(class="mt-1") }} {{
+                                    form.relatives(class="form-control") }} {% for error in
+                                    form.relatives.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.people_with_disabilities.label(class="mt-1") }} {{
+                                    form.people_with_disabilities(class="form-control") }} {% for error in
+                                    form.people_with_disabilities.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.monthly_income.label(class="mt-1") }} {{
+                                    form.monthly_income(class="form-control") }} {% for error in
+                                    form.monthly_income.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.is_income_enougth.label(class="mt-1") }} {{
+                                    form.is_income_enougth(class="form-control") }} {%
+                                    for error in form.is_income_enougth.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.ccn_sub_house_type.label(class="mt-1") }} {{
+                                    form.ccn_sub_house_type(class="form-control") }} {% for
+                                    error in form.ccn_sub_house_type.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.ccn_house_type.label(class="mt-1") }} {{
+                                    form.ccn_house_type(class="form-control") }} {% for
+                                    error in form.ccn_house_type.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.where_its_located.label(class="mt-1") }} {{
+                                    form.where_its_located(class="form-control") }} {% for
+                                    error in form.where_its_located.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.residence_address.label(class="mt-1") }} {{
+                                    form.residence_address(class="form-control") }} {% for
+                                    error in form.residence_address.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.type_transportation.label(class="mt-1") }} {{
+                                    form.type_transportation(class="form-control") }} {% for
+                                    error in form.type_transportation.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.type_transportation_2.label(class="mt-1") }} {{
+                                    form.type_transportation_2(class="form-control") }} {% for
+                                    error in form.type_transportation_2.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.social_stratum.label(class="mt-1") }} {{
+                                    form.social_stratum(class="form-control") }} {% for
+                                    error in form.social_stratum.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.electric_power.label(class="mt-1") }} {{
+                                    form.electric_power(class="form-control") }} {% for
+                                    error in form.electric_power.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.sewerage.label(class="mt-1") }} {{
+                                    form.sewerage(class="form-control") }} {% for
+                                    error in form.sewerage.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.aqueduct.label(class="mt-1") }} {{
+                                    form.aqueduct(class="form-control") }} {% for
+                                    error in form.aqueduct.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.natural_gas.label(class="mt-1") }} {{
+                                    form.natural_gas(class="form-control") }} {% for
+                                    error in form.natural_gas.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.garbage_collection.label(class="mt-1") }} {{
+                                    form.garbage_collection(class="form-control") }} {% for
+                                    error in form.garbage_collection.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.landline.label(class="mt-1") }} {{
+                                    form.landline(class="form-control") }} {% for
+                                    error in form.landline.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.debts.label(class="mt-1") }} {{
+                                    form.debts(class="form-control") }} {% for
+                                    error in form.debts.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.debt_refinancing.label(class="mt-1") }} {{
+                                    form.debt_refinancing(class="form-control") }} {% for
+                                    error in form.debt_refinancing.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.computer_at_home.label(class="mt-1") }} {{
+                                    form.computer_at_home(class="form-control") }} {% for
+                                    error in form.computer_at_home.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.have_internet_access.label(class="mt-1") }} {{
+                                    form.have_internet_access(class="form-control") }} {% for
+                                    error in form.have_internet_access.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-12">
+                                    <a href="/sociodemographic_data_details" class="btn btn-sm btn-secondary mt-2">CANCELAR</a>
+                                    {{ form.submit(class="btn btn-sm btn-success mt-2",value="ACTUALIZAR") }} {% for
+                                    error in form.submit.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

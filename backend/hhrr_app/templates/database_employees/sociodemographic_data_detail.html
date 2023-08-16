@@ -1,0 +1,368 @@
+{% extends "home/base_home.html" %} {% block title %}{{ titulo }}{% endblock %}
+{% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<div class="container-fluid text-end justify-content-center align-items-lg-center">
+    <h4><strong>{{query_logged_user.employee_personal_email}}</strong></h4>
+    <h6><strong>{{query_logged_user.full_name_employee}}</strong></h6>
+</div>
+
+<!-- Button trigger modal -->
+<div class="container-fluid py-2">
+    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        REGISTRAR DATOS SOCIODEMOGROFICOS
+    </button>
+</div>
+
+<div class="container-fluid">
+    <table class="table caption-top responsive table-hover" id="table_ss_employee" cellspacing="0" style="width: 100%">
+        <caption>
+            Detalle Datos Sociodemograficos
+        </caption>
+        <thead>
+            <tr>
+                <th class="text-center">CCN</th>
+                <th class="text-center">EMPLEADO</th>
+                <th class="text-center">OTRAS PERSONAS A CARGO</th>
+                <th class="text-center">N. PERSONAS EN EL HOGAR</th>
+                <th class="text-center">N. DE PERSONAS EN SITUACION DE DISCAPACIDAD</th>
+                <th class="text-center">INGRESOS FAMILIARES MENSUALES</th>
+                <th class="text-center">LOS INGRESOS ALCANZAN PARA CUBRIR LOS GASTOS MINIMOS</th>
+                <th class="text-center">TIPO DE VIVIENDA</th>
+                <th class="text-center">CARACTERISTICAS DE LA VIVIENDA</th>
+                <th class="text-center">ZONA EN LA QUE SE UBICA</th>
+                <th class="text-center">DIRECCION DE RESIDENCIA</th>
+                <th class="text-center">TIPO DE TRANSPORTE PARA IR AL TRABAJO</th>
+                <th class="text-center">TIPO DE TRANSPORTE OPCIONAL PARA IR AL TRABAJO</th>
+                <th class="text-center">ESTRATO DE SERVICIOS PUBLICOS</th>
+                <th class="text-center">ENERGIA ELECTRICA</th>
+                <th class="text-center">ALCANTARILLADO</th>
+                <th class="text-center">ACUEDUCTO</th>
+                <th class="text-center">GAS NATURAL, RED PUBLICA</th>
+                <th class="text-center">RECOLECCION DE BASURAS</th>
+                <th class="text-center">TELEFONO FIJO</th>
+                <th class="text-center">TIENE DEUDAS</th>
+                <th class="text-center">INTERES EN REFINANCIAR LAS DEUDAS Y CONSOLOLIDARLAS</th>
+                <th class="text-center">EN SU HOGAR HAY COMPUTADOR</th>
+                <th class="text-center">TIENE ACCESO A INTERNET</th>
+                <th class="text-center">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for sociodemographic_data in query_list_sociodemographic_data %}
+            <tr>
+                <td class="text-center">{{sociodemographic_data.ccn_sociodemographic_data }}</td>
+                <td class="text-center">{{sociodemographic_data.Employee.full_name_employee}}</td>
+                <td class="text-center">{{sociodemographic_data.other_dependents }}</td>
+                <td class="text-center">{{sociodemographic_data.relatives }}</td>
+                <td class="text-center">{{sociodemographic_data.people_with_disabilities }}</td>
+                <td class="text-center">{{sociodemographic_data.monthly_income }}</td>
+                <td class="text-center">{{sociodemographic_data.is_income_enougth }}</td>
+                <td class="text-center">{{sociodemographic_data.SubHouseType.sub_house_type }}</td>
+                <td class="text-center">{{sociodemographic_data.HouseType.house_type }}</td>
+                <td class="text-center">{{sociodemographic_data.where_its_located }}</td>
+                <td class="text-center">{{sociodemographic_data.residence_address }}</td>
+                <td class="text-center">{{sociodemographic_data.type_transportation }}</td>
+                <td class="text-center">{{sociodemographic_data.type_transportation_2 }}</td>
+                <td class="text-center">{{sociodemographic_data.social_stratum }}</td>
+                <td class="text-center">{{sociodemographic_data.electric_power }}</td>
+                <td class="text-center">{{sociodemographic_data.sewerage }}</td>
+                <td class="text-center">{{sociodemographic_data.aqueduct }}</td>
+                <td class="text-center">{{sociodemographic_data.natural_gas }}</td>
+                <td class="text-center">{{sociodemographic_data.garbage_collection }}</td>
+                <td class="text-center">{{sociodemographic_data.landline }}</td>
+                <td class="text-center">{{sociodemographic_data.debts }}</td>
+                <td class="text-center">{{sociodemographic_data.debt_refinancing }}</td>
+                <td class="text-center">{{sociodemographic_data.computer_at_home }}</td>
+                <td class="text-center">{{sociodemographic_data.have_internet_access }}</td>
+                <td>
+                    <a class="text-center btn btn-secondary btn-sm"
+                        href="/update_sociodemographic_data/{{ sociodemographic_data.ccn_sociodemographic_data }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var table = $("#table_ss_employee").DataTable({
+            language: {
+                lengthMenu: "Mostrar _MENU_ registros",
+                zeroRecords: "No se encontraron resultados",
+                info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+                infoFiltered: "(filtrado de un total de _MAX_ registros)",
+                sSearch: "Buscar:",
+                oPaginate: {
+                    sFirst: "Primero",
+                    sLast: "Último",
+                    sNext: "Siguiente",
+                    sPrevious: "Anterior",
+                },
+                sProcessing: "Procesando...",
+            },
+            order: [[0, "dsc"]],
+            searchable: true,
+            fixedHeight: true,
+
+            responsive: true,
+            paging: true,
+            select: true,
+            autoFill: true,
+            dom: '<fl><"top"p>rt<"bottom"p><BRSPQ><"clear">',
+            buttons: [
+                {
+                    extend: "excel",
+                    title: "Archivo",
+                    filename: "Export_File_xlxs",
+                    text: '<img src="../../static/images/excel.png" width="50" height="50">',
+                },
+            ],
+        });
+
+        new $.fn.dataTable.Responsive(table, {
+            details: false,
+        });
+
+        table.buttons().container().appendTo($("", table.table().container()));
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    REGISTRAR DATOS SOCIODEMOGRAFICOS
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <form class="row g-1" action="{{ url_for('db_employee.create_sociodemographic_data') }}"
+                            method="POST" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.ccn_employee.label(class="mt-1") }} {{
+                                form.ccn_employee(class="form-control") }} {% for error in
+                                form.ccn_employee.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.other_dependents.label(class="mt-1") }} {{
+                                form.other_dependents(class="form-control") }} {% for error in
+                                form.other_dependents.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.relatives.label(class="mt-1") }} {{
+                                form.relatives(class="form-control") }} {% for error in
+                                form.relatives.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.people_with_disabilities.label(class="mt-1") }} {{
+                                form.people_with_disabilities(class="form-control") }} {% for error in
+                                form.people_with_disabilities.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.monthly_income.label(class="mt-1") }} {{
+                                form.monthly_income(class="form-control") }} {% for error in
+                                form.monthly_income.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.is_income_enougth.label(class="mt-1") }} {{
+                                form.is_income_enougth(class="form-control") }} {%
+                                for error in form.is_income_enougth.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.ccn_sub_house_type.label(class="mt-1") }} {{
+                                form.ccn_sub_house_type(class="form-control") }} {% for
+                                error in form.ccn_sub_house_type.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.ccn_house_type.label(class="mt-1") }} {{
+                                form.ccn_house_type(class="form-control") }} {% for
+                                error in form.ccn_house_type.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.where_its_located.label(class="mt-1") }} {{
+                                form.where_its_located(class="form-control") }} {% for
+                                error in form.where_its_located.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.residence_address.label(class="mt-1") }} {{
+                                form.residence_address(class="form-control") }} {% for
+                                error in form.residence_address.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.type_transportation.label(class="mt-1") }} {{
+                                form.type_transportation(class="form-control") }} {% for
+                                error in form.type_transportation.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.type_transportation_2.label(class="mt-1") }} {{
+                                form.type_transportation_2(class="form-control") }} {% for
+                                error in form.type_transportation_2.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.social_stratum.label(class="mt-1") }} {{
+                                form.social_stratum(class="form-control") }} {% for
+                                error in form.social_stratum.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.electric_power.label(class="mt-1") }} {{
+                                form.electric_power(class="form-control") }} {% for
+                                error in form.electric_power.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.sewerage.label(class="mt-1") }} {{
+                                form.sewerage(class="form-control") }} {% for
+                                error in form.sewerage.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.aqueduct.label(class="mt-1") }} {{
+                                form.aqueduct(class="form-control") }} {% for
+                                error in form.aqueduct.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.natural_gas.label(class="mt-1") }} {{
+                                form.natural_gas(class="form-control") }} {% for
+                                error in form.natural_gas.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.garbage_collection.label(class="mt-1") }} {{
+                                form.garbage_collection(class="form-control") }} {% for
+                                error in form.garbage_collection.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.landline.label(class="mt-1") }} {{
+                                form.landline(class="form-control") }} {% for
+                                error in form.landline.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.debts.label(class="mt-1") }} {{
+                                form.debts(class="form-control") }} {% for
+                                error in form.debts.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.debt_refinancing.label(class="mt-1") }} {{
+                                form.debt_refinancing(class="form-control") }} {% for
+                                error in form.debt_refinancing.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.computer_at_home.label(class="mt-1") }} {{
+                                form.computer_at_home(class="form-control") }} {% for
+                                error in form.computer_at_home.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.have_internet_access.label(class="mt-1") }} {{
+                                form.have_internet_access(class="form-control") }} {% for
+                                error in form.have_internet_access.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-12">
+                                {{ form.submit(class="btn btn-sm btn-success mt-2") }} {% for
+                                error in form.submit.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

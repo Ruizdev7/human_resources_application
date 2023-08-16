@@ -1,0 +1,255 @@
+{% extends "home/base_home.html" %} {% block title %}{{ titulo }}{% endblock %}
+{% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<div class="container-fluid text-end justify-content-center align-items-lg-center">
+  <h4><strong>{{query_logged_user.employee_personal_email}}</strong></h4>
+  <h6><strong>{{query_logged_user.full_name_employee}}</strong></h6>
+</div>
+
+<!-- Button trigger modal -->
+<div class="container-fluid py-2">
+  <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    REGISTRAR VINCULACION LABORAL
+  </button>
+</div>
+
+<div class="container-fluid">
+  <table class="table caption-top responsive table-hover" id="table_ss_employee" cellspacing="0" style="width: 100%">
+    <caption>
+      Detalle Vinculacion Laboral
+    </caption>
+    <thead>
+      <tr>
+        <th class="text-center">CCN</th>
+        <th class="text-center">NOMBRE COMPLETO</th>
+        <th class="text-center">AREA TRABAJO</th>
+        <th class="text-center">CARGO</th>
+        <th class="text-center">PROCESS</th>
+        <th class="text-center">TURNO TRABAJO</th>
+        <th class="text-center">FECHA VINCULACION</th>
+        <th class="text-center">FECHA DESVINCULACION</th>
+        <th class="text-center">TIPO DE VINCULACION</th>
+        <th class="text-center">EMAIL CORPORATIVO</th>
+        <th class="text-center">TELEFONO CORPORATIVO</th>
+        <th class="text-center">JEFE INMEDIATO</th>
+        <th class="text-center">ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for employment_relationship in query_list_employment_relationship %}
+      <tr>
+        <td class="text-start">
+          {{ employment_relationship.ccn_employment_relationship }}
+        </td>
+        <td class="text-start">
+          {{ employment_relationship.Employee.full_name_employee }}
+        </td>
+        <td class="text-center">{{ employment_relationship.Role.area }}</td>
+        <td class="text-center">{{ employment_relationship.Role.role }}</td>
+        <td class="text-center">{{ employment_relationship.Role.process }}</td>
+        <td class="text-center">
+          {{ employment_relationship.WorkShift.description_work_shift }}
+        </td>
+        <td class="text-center">{{ employment_relationship.binding_date }}</td>
+        <td class="text-center">
+          {{ employment_relationship.termination_date }}
+        </td>
+        <td class="text-start">
+          {{
+          employment_relationship.TypeRelationship.description_type_relationship
+          }}
+        </td>
+        <td class="text-start">
+          {{ employment_relationship.employee_corporate_email }}
+        </td>
+        <td class="text-center">
+          {{ employment_relationship.employee_corporate_cellphone }}
+        </td>
+        <td class="text-center">
+          {{ employment_relationship.immediate_boss }}
+        </td>
+        <td>
+          <a class="text-center btn btn-secondary btn-sm"
+            href="/update_employment_relationship/{{ employment_relationship.ccn_employment_relationship }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path
+                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+              <path fill-rule="evenodd"
+                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+            </svg>
+          </a>
+          <a class="btn btn-danger btn-sm"
+            href="/delete_employment_relationship/{{ employment_relationship.ccn_employment_relationship }}"
+            id="Eliminacion">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+              viewBox="0 0 16 16">
+              <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+              <path fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+            </svg>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    var table = $("#table_ss_employee").DataTable({
+      language: {
+        lengthMenu: "Mostrar _MENU_ registros",
+        zeroRecords: "No se encontraron resultados",
+        info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+        infoFiltered: "(filtrado de un total de _MAX_ registros)",
+        sSearch: "Buscar:",
+        oPaginate: {
+          sFirst: "Primero",
+          sLast: "Último",
+          sNext: "Siguiente",
+          sPrevious: "Anterior",
+        },
+        sProcessing: "Procesando...",
+      },
+      order: [[0, "dsc"]],
+      searchable: true,
+      fixedHeight: true,
+
+      responsive: true,
+      paging: true,
+      select: true,
+      autoFill: true,
+      dom: '<fl><"top"p>rt<"bottom"p><BRSPQ><"clear">',
+      buttons: [
+        {
+          extend: "excel",
+          title: "Archivo",
+          filename: "Export_File_xlxs",
+          text: '<img src="../../static/images/excel.png" width="50" height="50">',
+        },
+      ],
+    });
+
+    new $.fn.dataTable.Responsive(table, {
+      details: false,
+    });
+
+    table.buttons().container().appendTo($("", table.table().container()));
+  });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          REGISTRAR VINCULACION LABORAL
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <form class="row g-1" action="{{ url_for('db_employee.create_employment_relationship') }}" method="POST"
+              enctype="multipart/form-data">
+              {{ form.hidden_tag() }}
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.employee.label(class="mt-1") }} {{
+                form.employee(class="form-control") }} {% for error in
+                form.employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.role.label(class="mt-1") }} {{
+                form.role(class="form-control") }} {% for error in
+                form.role.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.work_shift.label(class="mt-1") }} {{
+                form.work_shift(class="form-control") }} {% for error in
+                form.work_shift.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.type_relationship.label(class="mt-1") }} {{
+                form.type_relationship(class="form-control") }} {% for error in
+                form.type_relationship.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.binding_date.label(class="mt-1") }} {{
+                form.binding_date(class="form-control") }} {% for error in
+                form.binding_date.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.employee_corporate_cellphone.label(class="mt-1") }} {{
+                form.employee_corporate_cellphone(class="form-control") }} {%
+                for error in form.employee_corporate_cellphone.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.employee_corporate_email.label(class="mt-1") }} {{
+                form.employee_corporate_email(class="form-control") }} {% for
+                error in form.employee_corporate_email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              
+              <div class="col-md-12 col-lg-6">
+                {{ form.immediate_boss.label(class="mt-1") }} {{
+                form.immediate_boss(class="form-control") }} {% for
+                error in form.immediate_boss.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-12">
+                {{ form.submit(class="btn btn-sm btn-success mt-2") }} {% for
+                error in form.submit.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,321 @@
+{% extends "home/base_home.html" %} {% block title %}{{ titulo }}{% endblock %}
+{% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<div class="container-fluid text-end justify-content-center align-items-lg-center">
+    <h4><strong>{{query_logged_user.employee_personal_email}}</strong></h4>
+    <h6><strong>{{query_logged_user.full_name_employee}}</strong></h6>
+</div>
+
+<!-- Button trigger modal -->
+<div class="container-fluid py-2">
+    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        REGISTRAR ESTADO DE SALUD
+    </button>
+</div>
+
+<div class="container-fluid">
+    <table class="table caption-top responsive table-hover" id="table_ss_employee" cellspacing="0" style="width: 100%">
+        <caption>
+            Detalle Vinculacion Laboral
+        </caption>
+        <thead>
+            <tr>
+                <th class="text-center">CCN</th>
+                <th class="text-center">EMPLEADO</th>
+                <th class="text-center">CONSUME BEBIDAS ALCOHOLICAS</th>
+                <th class="text-center">ENFERMEDADES</th>
+                <th class="text-center">ALERGIAS</th>
+                <th class="text-center">CUALES ALERGIAS</th>
+                <th class="text-center">MEDICAMENTOS</th>
+                <th class="text-center">CUALES MEDICAMENTOS</th>
+                <th class="text-center">ULTIMA CONSULTA MEDICA</th>
+                <th class="text-center">HA SENTIDO QUE DEBE INGERIR MENOS ALCOHOL</th>
+                <th class="text-center">LE MOLESTA QUE LO CRITIQUEN POR TOMAR ALCOHOL</th>
+                <th class="text-center">SE HA SENTIDO MAL POR LA FORMA EN LA QUE INGIERE ALCOHOL</th>
+                <th class="text-center">HA SENTIDO NECESIDAD DE INGERIR ALCOHOL EN LAS MAÑANAS</th>
+                <th class="text-center">PRACTICA DEPORTE 3 VECES POR SEMANA, MINIMO 30 MINUTOS</th>
+                <th class="text-center">ES FUMADOR</th>
+                <th class="text-center">CUANTOS CIGARRILLOS AL DIA</th>
+                <th class="text-center">ES EXFUMADOR</th>
+                <th class="text-center">CONSUME SUSTANCIAS PSICOACTIVAS</th>
+                <th class="text-center">HA CONSUMIDO SUSTANCIAS PSICOACTIVAS</th>
+                <th class="text-center">CUALES SUSTANCIAS PSICOACTIVAS</th>
+                <th class="text-center">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for health_condition in query_list_health_condition %}
+            <tr>
+                <td class="text-center">{{health_condition.ccn_health_condition }}</td>
+                <td class="text-center">{{health_condition.Employee.full_name_employee}}</td>
+                <td class="text-center">{{health_condition.consume_alcoholic_beverages }}</td>
+                <td class="text-center">{{health_condition.Diseases.diseases }}</td>
+                <td class="text-center">{{health_condition.allergies }}</td>
+                <td class="text-center">{{health_condition.what_allergy }}</td>
+                <td class="text-center">{{health_condition.medicines }}</td>
+                <td class="text-center">{{health_condition.what_medicin }}</td>
+                <td class="text-center">{{health_condition.last_medical_consultation }}</td>
+                <td class="text-center">{{health_condition.plan_to_drink_less_alcoholic_beverages }}</td>
+                <td class="text-center">{{health_condition.discomfort_due_to_criticism_when_ingesting_alcohol }}</td>
+                <td class="text-center">{{health_condition.need_to_drink_alcohol_in_the_morning }}</td>
+                <td class="text-center">{{health_condition.need_to_drink_alcohol_in_the_morning }}</td>
+                <td class="text-center">{{health_condition.physical_activity_3_times_a_week_30_minutes }}</td>
+                <td class="text-center">{{health_condition.he_is_a_smoker }}</td>
+                <td class="text-center">{{health_condition.how_many_cigarettes_a_day }}</td>
+                <td class="text-center">{{health_condition.he_is_ex_smoker }}</td>
+                <td class="text-center">{{health_condition.consume_psychoactive_substances }}</td>
+                <td class="text-center">{{health_condition.used_psychoactive_substances_before }}</td>
+                <td class="text-center">{{health_condition.what_psychoactive_substances }}</td>
+                <td>
+                    <a class="text-center btn btn-secondary btn-sm"
+                        href="/update_health_condition/{{ health_condition.ccn_health_condition }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var table = $("#table_ss_employee").DataTable({
+            language: {
+                lengthMenu: "Mostrar _MENU_ registros",
+                zeroRecords: "No se encontraron resultados",
+                info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+                infoFiltered: "(filtrado de un total de _MAX_ registros)",
+                sSearch: "Buscar:",
+                oPaginate: {
+                    sFirst: "Primero",
+                    sLast: "Último",
+                    sNext: "Siguiente",
+                    sPrevious: "Anterior",
+                },
+                sProcessing: "Procesando...",
+            },
+            order: [[0, "dsc"]],
+            searchable: true,
+            fixedHeight: true,
+
+            responsive: true,
+            paging: true,
+            select: true,
+            autoFill: true,
+            dom: '<fl><"top"p>rt<"bottom"p><BRSPQ><"clear">',
+            buttons: [
+                {
+                    extend: "excel",
+                    title: "Archivo",
+                    filename: "Export_File_xlxs",
+                    text: '<img src="../../static/images/excel.png" width="50" height="50">',
+                },
+            ],
+        });
+
+        new $.fn.dataTable.Responsive(table, {
+            details: false,
+        });
+
+        table.buttons().container().appendTo($("", table.table().container()));
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    REGISTRAR ESTADO DE SALUD
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <form class="row g-1" action="{{ url_for('db_employee.create_health_condition') }}"
+                            method="POST" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.ccn_employee.label(class="mt-1") }} {{
+                                form.ccn_employee(class="form-control") }} {% for error in
+                                form.ccn_employee.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.consume_alcoholic_beverages.label(class="mt-1") }} {{
+                                form.consume_alcoholic_beverages(class="form-control") }} {% for error in
+                                form.consume_alcoholic_beverages.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.diseases.label(class="mt-1") }} {{
+                                form.diseases(class="form-control") }} {% for error in
+                                form.diseases.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.allergies.label(class="mt-1") }} {{
+                                form.allergies(class="form-control") }} {% for error in
+                                form.allergies.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.what_allergy.label(class="mt-1") }} {{
+                                form.what_allergy(class="form-control") }} {% for error in
+                                form.what_allergy.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-12 col-lg-6">
+                                {{ form.medicines.label(class="mt-1") }} {{
+                                form.medicines(class="form-control") }} {%
+                                for error in form.medicines.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.what_medicin.label(class="mt-1") }} {{
+                                form.what_medicin(class="form-control") }} {% for
+                                error in form.what_medicin.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.last_medical_consultation.label(class="mt-1") }} {{
+                                form.last_medical_consultation(class="form-control") }} {% for
+                                error in form.last_medical_consultation.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.plan_to_drink_less_alcoholic_beverages.label(class="mt-1") }} {{
+                                form.plan_to_drink_less_alcoholic_beverages(class="form-control") }} {% for
+                                error in form.plan_to_drink_less_alcoholic_beverages.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.discomfort_due_to_criticism_when_ingesting_alcohol.label(class="mt-1") }} {{
+                                form.discomfort_due_to_criticism_when_ingesting_alcohol(class="form-control") }} {% for
+                                error in form.discomfort_due_to_criticism_when_ingesting_alcohol.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.need_to_drink_alcohol_in_the_morning.label(class="mt-1") }} {{
+                                form.need_to_drink_alcohol_in_the_morning(class="form-control") }} {% for
+                                error in form.need_to_drink_alcohol_in_the_morning.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.physical_activity_3_times_a_week_30_minutes.label(class="mt-1") }} {{
+                                form.physical_activity_3_times_a_week_30_minutes(class="form-control") }} {% for
+                                error in form.physical_activity_3_times_a_week_30_minutes.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.he_is_a_smoker.label(class="mt-1") }} {{
+                                form.he_is_a_smoker(class="form-control") }} {% for
+                                error in form.he_is_a_smoker.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.how_many_cigarettes_a_day.label(class="mt-1") }} {{
+                                form.how_many_cigarettes_a_day(class="form-control") }} {% for
+                                error in form.how_many_cigarettes_a_day.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.he_is_ex_smoker.label(class="mt-1") }} {{
+                                form.he_is_ex_smoker(class="form-control") }} {% for
+                                error in form.he_is_ex_smoker.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.consume_psychoactive_substances.label(class="mt-1") }} {{
+                                form.consume_psychoactive_substances(class="form-control") }} {% for
+                                error in form.consume_psychoactive_substances.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.used_psychoactive_substances_before.label(class="mt-1") }} {{
+                                form.used_psychoactive_substances_before(class="form-control") }} {% for
+                                error in form.used_psychoactive_substances_before.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                {{ form.what_psychoactive_substances.label(class="mt-1") }} {{
+                                form.what_psychoactive_substances(class="form-control") }} {% for
+                                error in form.what_psychoactive_substances.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+
+                            <div class="col-md-12 col-lg-12">
+                                {{ form.submit(class="btn btn-sm btn-success mt-2") }} {% for
+                                error in form.submit.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

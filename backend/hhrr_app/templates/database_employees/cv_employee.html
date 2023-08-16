@@ -1,0 +1,703 @@
+{% extends "home/base_home.html" %} {% block title %}{{ titulo }}{% endblock %}
+{% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<div class="container-fluid">
+	<div class="row align-items-center">
+		<h1 class="text-center mt-3">Hoja de Vida del Empleado</h1>
+		<div class="col-lg-4 align-self-start">
+			<div class="col-lg-12 align-self-start">
+				<img class="mt-5" width="100%" src="../../static/images/employee_photos/{{ query_employee.image }}" />
+			</div>
+		</div>
+		<div class="col-lg-4 align-self-start my-5">
+			<div class="col-lg-12 align-self-start">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-basic-data" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4 class="text-center">Datos Basicos</h4>
+							</button>
+						</h2>
+						<div id="flush-basic-data" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">Tipo de dato</th>
+											<th scope="col">Dato del empleado</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">Tipo de Documento</th>
+											<td>{{query_employee.TypeId.description_type_id}}</td>
+										</tr>
+										<tr>
+											<th scope="row">No. de Documento</th>
+											<td>{{query_employee.number_id_employee}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Primer Nombre</th>
+											<td>{{query_employee.first_name_employee}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Segundo Nombre</th>
+											<td>{{query_employee.middle_name_employee}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Primer Apellido</th>
+											<td>{{query_employee.first_last_name_employee}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Segundo Apellido</th>
+											<td>{{query_employee.second_last_name_employee}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Fecha de Nacimiento</th>
+											<td>{{query_employee.date_birth_employee}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Edad</th>
+											<td>{{query_employee.age}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Rango de Edad</th>
+											<td>{{query_employee.AgeRange.age_range}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Genero</th>
+											<td>{{query_employee.AutoPerceivedGender.auto_perceived_gender}}</td>
+										</tr>
+										<tr>
+											<th scope="row">RH</th>
+											<td>{{query_employee.RH.rh}}</td>
+										</tr>
+										<tr>
+											<th scope="row">E-mail Personal</th>
+											<td>{{query_employee.employee_personal_email}}</td>
+										</tr>
+										<tr>
+											<th scope="row">Telefono Personal</th>
+											<td>{{query_employee.employee_personal_cellphone}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 align-self-start">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-emergency-contact" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4>Datos de Contacto de Emergencia</h4>
+							</button>
+						</h2>
+						<div id="flush-emergency-contact" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								{% if query_emergency_contact_detail %}
+								<div class="col-lg-12 align-self-start">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Tipo de dato</th>
+												<th scope="col">Dato Demograficos</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Nombre de Contacto de Emergencia</th>
+												<td>{{query_emergency_contact_detail.emergency_contact}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Parentesco</th>
+												<td>{{query_emergency_contact_detail.Relationship.relationship}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Celular Emergencia</th>
+												<td>{{query_emergency_contact_detail.cellphone }}</td>
+											</tr>
+										<tbody>
+									</table>
+								</div>
+								{% else %}
+								<p>No registra informacion</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-12 align-self-start">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-collapseOne" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4>Datos de Afiliación</h4>
+							</button>
+						</h2>
+						<div id="flush-collapseOne" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								{% if query_ssemployee %}
+								<div class="col-lg-12 align-self-start">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Tipo de dato</th>
+												<th scope="col">Dato de Afiliación</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Tipo de Afiliación</th>
+												<td>{{query_ssemployee.TypeAffiliation.description_type_affiliation}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Tipo de Contribuidor</th>
+												<td>{{query_ssemployee.TypeContributor.description_type_contributor}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">EPS</th>
+												<td>{{query_ssemployee.EPS.description_eps}}</td>
+											</tr>
+											<tr>
+												<th scope="row">AFP</th>
+												<td>{{query_ssemployee.AFP.description_afp}}</td>
+											</tr>
+											<tr>
+												<th scope="row">ARL</th>
+												<td>{{query_ssemployee.ARL.description_arl}}</td>
+											</tr>
+											<tr>
+												<th scope="row">CCF</th>
+												<td>{{query_ssemployee.CCF.description_ccf}}</td>
+											</tr>
+											<tr>
+												<th scope="row">APP</th>
+												<td>{{query_ssemployee.AAP.description_aap}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								{% else %}
+								<p>No registra informacion</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 align-self-start">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-relationship-data" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4>Datos de Vinculación</h4>
+							</button>
+						</h2>
+						<div id="flush-relationship-data" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								{% if query_employee_relationship %}
+								<div class="col-lg-12 align-self-start">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Tipo de dato</th>
+												<th scope="col">Dato de Vinculación Laboral</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Role --> Cargo</th>
+												<td>{{query_employee_relationship.Role.full_role}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Area</th>
+												<td>{{query_employee_relationship.Role.area}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Turno de Trabajo</th>
+												<td>{{query_employee_relationship.WorkShift.description_work_shift}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Tipo de Vinculación</th>
+												<td>{{query_employee_relationship.TypeRelationship.description_type_relationship}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Fecha de Vinculación</th>
+												<td>{{query_employee_relationship.binding_date}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Fecha de Desvinculación</th>
+												<td>{{query_employee_relationship.termination_date}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Telefono Corporativo</th>
+												<td>{{query_employee_relationship.employee_corporate_cellphone}}
+											</tr>
+											<tr>
+												<th scope="row">Tiempo Laborado</th>
+												<td>{{query_employee_relationship.time_worked}}
+											</tr>
+											<tr>
+												<th scope="row">Dias pendientes por vacaciones</th>
+												<td>{{pending_days_to_enjoy_for_holidays}}
+											</tr>
+											<tr>
+												<th scope="row">Dias tomados de vacaciones</th>
+												<td>{{query_employee_relationship.pending_days_to_enjoy_for_holidays}}
+											</tr>
+											<tr>
+												<th scope="row">E-mail Corporativo</th>
+												<td>{{query_employee_relationship.employee_corporate_email}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Jefe Inmediato</th>
+												<td>{{query_employee_relationship.immediate_boss}}</td>
+											</tr>
+										<tbody>
+									</table>
+								</div>
+								{% else %}
+								<p>No registra informacion</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 align-self-start my-5">
+			<div class="col-lg-12 align-self-start">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-demographic-data" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4>Datos Demograficos</h4>
+							</button>
+						</h2>
+						<div id="flush-demographic-data" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								{% if query_demographic_data %}
+								<div class="col-lg-12 align-self-start">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Tipo de dato</th>
+												<th scope="col">Dato Demograficos</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Departamento de Nacimiento</th>
+												<td>{{query_demographic_data.DepartmentBirth.descripcion_department}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Ciudad de Nacimiento</th>
+												<td>{{query_demographic_data.CityBirthCity.description_city}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Departamento de Residencia</th>
+												<td>{{query_demographic_data.DepartmentResidence.descripcion_department}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Ciudad de Residencia</th>
+												<td>{{query_demographic_data.CityCityResidence.description_city}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Nivel de Escolaridad</th>
+												<td>{{query_demographic_data.SchoolingLevel.description_schooling_level}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Raza</th>
+												<td>{{query_demographic_data.Race.description_race}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Cabeza de Hogar</th>
+												<td>{{query_demographic_data.is_head_of_household}}</td>
+											</tr>
+										<tbody>
+									</table>
+								</div>
+								{% else %}
+								<p>No registra informacion</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 align-self-start">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-sociodemographic-data" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4>Datos Sociodemograficos</h4>
+							</button>
+						</h2>
+						<div id="flush-sociodemographic-data" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								{% if query_sociodemographic_data %}
+								<div class="col-lg-12 align-self-start">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Tipo de dato</th>
+												<th scope="col">Dato Sociodemografico</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Personas que Dependen</th>
+												<td>{{query_sociodemographic_data.other_dependents}}</td>
+											</tr>
+											<tr>
+												<th scope="row">No. de Personas en el Hogar</th>
+												<td>{{query_sociodemographic_data.relatives}}</td>
+											</tr>
+											<tr>
+												<th scope="row">No. de personas en condición de discapacidad
+												</th>
+												<td>{{query_sociodemographic_data.people_with_disabilities}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Ingresos familiares mensuales SMLMV</th>
+												<td>{{query_sociodemographic_data.monthly_income}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Los ingresos alcanzan para cubrir los gastos
+													mensuales</th>
+												<td>{{query_sociodemographic_data.is_income_enougth}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Tipo de Vivienda</th>
+												<td>{{query_sociodemographic_data.SubHouseType.sub_house_type}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Características de la Vivienda</th>
+												<td>{{query_sociodemographic_data.HouseType.house_type}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Zona en la que se ubica</th>
+												<td>{{query_sociodemographic_data.where_its_located}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Dirección de residencia</th>
+												<td>{{query_sociodemographic_data.residence_address}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Tipo de ruta para ir al trabajo</th>
+												<td>{{query_sociodemographic_data.type_transportation}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Tipo de transporte para ir al trabajo
+													(opcional)</th>
+												<td>{{query_sociodemographic_data.type_transportation_2}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Estrato de servicios publicos</th>
+												<td>{{query_sociodemographic_data.social_stratum}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Energia Electrica</th>
+												<td>{{query_sociodemographic_data.electric_power}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Alcantarillado</th>
+												<td>{{query_sociodemographic_data.sewerage}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Acueducto</th>
+												<td>{{query_sociodemographic_data.aqueduct}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Gas Natural</th>
+												<td>{{query_sociodemographic_data.natural_gas}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Recolección de basuras</th>
+												<td>{{query_sociodemographic_data.garbage_collection}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Tiene telefono fijo</th>
+												<td>{{query_sociodemographic_data.landline}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Tiene deudas</th>
+												<td>{{query_sociodemographic_data.debts}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Interes en consolidar las deudas en un solo
+													credito</th>
+												<td>{{query_sociodemographic_data.debt_refinancing}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Tiene computador en su hogar</th>
+												<td>{{query_sociodemographic_data.computer_at_home}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Tiene acceso a internet</th>
+												<td>{{query_sociodemographic_data.have_internet_access}}
+												</td>
+											</tr>
+										<tbody>
+									</table>
+								</div>
+								{% else %}
+								<p>No registra informacion</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 align-self-start">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-health-condition" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4>Estado de Salud</h4>
+							</button>
+						</h2>
+						<div id="flush-health-condition" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								{% if query_health_condition %}
+								<div class="col-lg-12 align-self-start">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Tipo de dato</th>
+												<th scope="col">Estado de Salud</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Consumo de bebidas alcoholicas</th>
+												<td>{{query_health_condition.consume_alcoholic_beverages}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Enfermedades</th>
+												<td>{{query_health_condition.Diseases.diseases}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Alergias</th>
+												<td>{{query_health_condition.allergies}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Cual Alergia</th>
+												<td>{{query_health_condition.what_allergy}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Medicamentos</th>
+												<td>{{query_health_condition.medicines}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Cuales medicamentos</th>
+												<td>{{query_health_condition.what_medicin}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Ultima consulta medica</th>
+												<td>{{query_health_condition.last_medical_consultation}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Ha sentido que debe ingerir menos cantidad
+													de bebidas alcoholicas</th>
+												<td>{{query_health_condition.plan_to_drink_less_alcoholic_beverages}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Le molesta que lo critiquen por la forma de
+													ingerir bebidas alcoholicas
+												</th>
+												<td>{{query_health_condition.discomfort_due_to_criticism_when_ingesting_alcohol}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Ha sentido necesidad de ingerir bebidas
+													alcoholicas en la mañana</th>
+												<td>{{query_health_condition.need_to_drink_alcohol_in_the_morning}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Actividad fisica 3 veces a la semana por 30
+													minutos cada sesion</th>
+												<td>{{query_health_condition.physical_activity_3_times_a_week_30_minutes}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Es fumador</th>
+												<td>{{query_health_condition.he_is_a_smoker}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Cantidad de cigarrilos al dia</th>
+												<td>{{query_health_condition.how_many_cigarettes_a_day}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Es exfumador</th>
+												<td>{{query_health_condition.he_is_ex_smoker}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Consume sustancias psicoactivas</th>
+												<td>{{query_health_condition.consume_psychoactive_substances}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Ha consumido sustancias psicoactivas</th>
+												<td>{{query_health_condition.used_psychoactive_substances_before}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Cual sustancia Psicoactiva</th>
+												<td>{{query_health_condition.what_psychoactive_substances}}
+												</td>
+											</tr>
+										<tbody>
+									</table>
+								</div>
+								{% else %}
+								<p>No registra informacion</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#flush-family-nucleus" aria-expanded="false"
+								aria-controls="flush-collapseOne">
+								<h4>Datos del Nucleo Familiar</h4>
+							</button>
+						</h2>
+						<div id="flush-family-nucleus" class="accordion-collapse collapse"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="col-lg-12">
+								{% if query_family_nucleus %}
+								<div class="col-lg-12 align-self-start">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Tipo de dato</th>
+												<th scope="col">Dato de Nucleo Familiar</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Estado Civil</th>
+												<td>{{query_family_nucleus.MaritalStatus.marital_status}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">No. de Hijos</th>
+												<td>{{query_family_nucleus.number_of_children}}</td>
+											</tr>
+											{% if query_family_nucleus.number_of_children != 0 %}
+											<tr>
+												<th scope="row">Tipo de Documento</th>
+												<td>{{query_family_nucleus.TypeId.description_type_id}}</td>
+											</tr>
+											<tr>
+												<th scope="row">No. de Documento</th>
+												<td>{{query_family_nucleus.number_id}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Genero</th>
+												<td>{{query_family_nucleus.AutoPerceivedGender.auto_perceived_gender}}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Primer Nombre</th>
+												<td>{{query_family_nucleus.first_name}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Segundo Nombre</th>
+												<td>{{query_family_nucleus.middle_name}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Primer Apellido</th>
+												<td>{{query_family_nucleus.first_last_name}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Segundo Apellido</th>
+												<td>{{query_family_nucleus.second_last_name}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Fecha de Nacimiento</th>
+												<td>{{query_family_nucleus.date_of_birth}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Edad</th>
+												<td>{{query_family_nucleus.age}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Rango de Edad</th>
+												<td>{{query_family_nucleus.AgeRange.age_range}}</td>
+											</tr>
+											<tr>
+												<th scope="row">Nivel de Escolaridad</th>
+												<td>{{query_family_nucleus.SchoolingLevel.description_schooling_level}}
+												</td>
+											</tr>
+											{% endif %}
+										<tbody>
+									</table>
+								</div>
+								{% else %}
+								<p>No registra informacion</p>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

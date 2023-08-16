@@ -1,0 +1,40 @@
+{
+    "tbl_RBAC": [
+        {
+            "ccn_rbac": 1,
+            "ccn_role": "MANAGER",
+            "tbl_aap": true,
+            "tbl_administrative_performance_evaluation": true,
+            "tbl_afp": true
+        }
+    ],
+    "tbl_RBAC_modules": [
+        {
+            "ccn_rbac_module": 1,
+            "rbac_module": "tbl_aap",
+            "is_allowed": "off",
+            "create": "off",
+            "read": "off",
+            "update": "off",
+            "delete": "off"
+        },
+        {
+            "ccn_rbac_module": 2,
+            "rbac_module": "tbl_administrative_performance_evaluation",
+            "is_allowed": "off",
+            "create": "off",
+            "read": "off",
+            "update": "off",
+            "delete": "off"
+        },
+        {
+            "ccn_rbac_module": 3,
+            "rbac_module": "tbl_afp",
+            "is_allowed": "off",
+            "create": "off",
+            "read": "off",
+            "update": "off",
+            "delete": "off"
+        }
+    ]
+}

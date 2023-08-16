@@ -1,0 +1,38 @@
+.venv
+./venv
+./data
+./backend/__pycache__/
+.vscode/
+./hhrr_app/GitToken.txt
+./GitToken.txt
+./hhrr/__pycache__
+__pycache__/*
+./hhrr_app/static/images
+./hhrr_app/static/images/*
+
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+node_modules/
+
+# Local env files
+.env
+*.env
+
+# Flask/Python specific
+backend/__pycache__/*.pyc
+*data/
+data
+log/
+temp/
+*.pyc
+
+# React specific
+build/
+build-server/
+
+# IDEs and editors
+.vscode/
+.idea/

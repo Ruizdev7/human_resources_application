@@ -1,0 +1,47 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container">
+  <div class="my-50" style="margin-top: 20px">
+    <form
+      class="row g-3"
+      action="{{url_for('defined_codes.update_country',ccn_country=ccn_country) }}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {{ form.hidden_tag() }}
+      <div class="col-md-6">
+        {{ form.id_country.label(class="text-dark") }} {{
+        form.id_country(class="form-control",value=q.id_country) }} {% for error
+        in form.id_country.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-6">
+        {{ form.description_country.label(class="text-dark") }} {{
+        form.description_country(class="form-control",value=q.description_country)
+        }} {% for error in form.description_country.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-6">
+        <a class="btn btn-secondary" href="/defined_code_country">Return</a>
+        {{ form.submit(class="btn btn-success",value="Update") }} {% for error
+        in form.submit.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="modal-footer">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio a
+          repellendus molestias natus sapiente totam incidunt animi, nostrum
+          enim necessitatibus alias fugit mollitia libero eos obcaecati,
+          cupiditate adipisci possimus. Libero.
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

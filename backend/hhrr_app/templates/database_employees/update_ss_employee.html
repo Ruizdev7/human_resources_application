@@ -1,0 +1,128 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          <strong>SEGURIDAD SOCIAL</strong>
+        </button>
+      </h2>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <div class="container">
+            <div class="my-50" style="margin-top: 20px">
+              <form
+                class="row g-3"
+                action="{{url_for('db_employee.update_ss_employee',ccn_ss_employee=ccn_ss_employee) }}"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                {{ form.hidden_tag() }}
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_employee.label(class="mt-1") }} {{
+                  form.ccn_employee(class="form-control") }} {% for error in
+                  form.ccn_employee.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_type_affiliation.label(class="mt-1") }} {{
+                  form.ccn_type_affiliation(class="form-control") }} {% for
+                  error in form.ccn_type_affiliation.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_type_contributor.label(class="mt-1") }} {{
+                  form.ccn_type_contributor(class="form-control") }} {% for
+                  error in form.ccn_type_contributor.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_eps.label(class="mt-1") }} {{
+                  form.ccn_eps(class="form-control") }} {% for error in
+                  form.ccn_eps.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_afp.label(class="mt-1") }} {{
+                  form.ccn_afp(class="form-control") }} {% for error in
+                  form.ccn_afp.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_arl.label(class="mt-1") }} {{
+                  form.ccn_arl(class="form-control") }} {% for error in
+                  form.ccn_arl.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_ccf.label(class="mt-1") }} {{
+                  form.ccn_ccf(class="form-control") }} {% for error in
+                  form.ccn_ccf.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_aap.label(class="mt-1") }} {{
+                  form.ccn_aap(class="form-control") }} {% for error in
+                  form.ccn_aap.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-12">
+                  <a
+                    class="btn btn-sm btn-secondary mt-2"
+                    href="/list_employee_social_security_affiliation"
+                    >Return</a
+                  >
+                  {{ form.submit(class="btn btn-sm btn-success mt-2") }} {% for
+                  error in form.submit.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="modal-footer">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Odio a repellendus molestias natus sapiente totam incidunt
+                    animi, nostrum enim necessitatibus alias fugit mollitia
+                    libero eos obcaecati, cupiditate adipisci possimus. Libero.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

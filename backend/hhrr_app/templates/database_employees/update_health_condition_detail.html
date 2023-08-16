@@ -1,0 +1,183 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <strong>ESTADO DE SALUD</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="container">
+                        <div class="my-50" style="margin-top: 20px">
+                            <form class="row g-1"
+                                action="{{ url_for('db_employee.update_health_condition',ccn_health_condition=ccn_health_condition) }}"
+                                method="POST" enctype="multipart/form-data">
+                                {{ form.hidden_tag() }}
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.ccn_employee.label(class="mt-1") }} {{
+                                    form.ccn_employee(class="form-control") }} {% for error in
+                                    form.ccn_employee.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.consume_alcoholic_beverages.label(class="mt-1") }} {{
+                                    form.consume_alcoholic_beverages(class="form-control") }} {% for error in
+                                    form.consume_alcoholic_beverages.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.diseases.label(class="mt-1") }} {{
+                                    form.diseases(class="form-control") }} {% for error in
+                                    form.diseases.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.allergies.label(class="mt-1") }} {{
+                                    form.allergies(class="form-control") }} {% for error in
+                                    form.allergies.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.what_allergy.label(class="mt-1") }} {{
+                                    form.what_allergy(class="form-control") }} {% for error in
+                                    form.what_allergy.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.medicines.label(class="mt-1") }} {{
+                                    form.medicines(class="form-control") }} {%
+                                    for error in form.medicines.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.what_medicin.label(class="mt-1") }} {{
+                                    form.what_medicin(class="form-control") }} {% for
+                                    error in form.what_medicin.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.last_medical_consultation.label(class="mt-1") }} {{
+                                    form.last_medical_consultation(class="form-control") }} {% for
+                                    error in form.last_medical_consultation.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.plan_to_drink_less_alcoholic_beverages.label(class="mt-1") }} {{
+                                    form.plan_to_drink_less_alcoholic_beverages(class="form-control") }} {% for
+                                    error in form.plan_to_drink_less_alcoholic_beverages.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.discomfort_due_to_criticism_when_ingesting_alcohol.label(class="mt-1") }} {{
+                                    form.discomfort_due_to_criticism_when_ingesting_alcohol(class="form-control") }} {%
+                                    for
+                                    error in form.discomfort_due_to_criticism_when_ingesting_alcohol.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.need_to_drink_alcohol_in_the_morning.label(class="mt-1") }} {{
+                                    form.need_to_drink_alcohol_in_the_morning(class="form-control") }} {% for
+                                    error in form.need_to_drink_alcohol_in_the_morning.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.physical_activity_3_times_a_week_30_minutes.label(class="mt-1") }} {{
+                                    form.physical_activity_3_times_a_week_30_minutes(class="form-control") }} {% for
+                                    error in form.physical_activity_3_times_a_week_30_minutes.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.he_is_a_smoker.label(class="mt-1") }} {{
+                                    form.he_is_a_smoker(class="form-control") }} {% for
+                                    error in form.he_is_a_smoker.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.how_many_cigarettes_a_day.label(class="mt-1") }} {{
+                                    form.how_many_cigarettes_a_day(class="form-control") }} {% for
+                                    error in form.how_many_cigarettes_a_day.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.he_is_ex_smoker.label(class="mt-1") }} {{
+                                    form.he_is_ex_smoker(class="form-control") }} {% for
+                                    error in form.he_is_ex_smoker.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.consume_psychoactive_substances.label(class="mt-1") }} {{
+                                    form.consume_psychoactive_substances(class="form-control") }} {% for
+                                    error in form.consume_psychoactive_substances.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.used_psychoactive_substances_before.label(class="mt-1") }} {{
+                                    form.used_psychoactive_substances_before(class="form-control") }} {% for
+                                    error in form.used_psychoactive_substances_before.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.what_psychoactive_substances.label(class="mt-1") }} {{
+                                    form.what_psychoactive_substances(class="form-control") }} {% for
+                                    error in form.what_psychoactive_substances.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+
+                                <div class="col-md-12 col-lg-12">
+                                    <a href="/health_condition_detail" class="btn btn-sm btn-secondary mt-2">CANCELAR</a>
+                                    {{ form.submit(class="btn btn-sm btn-success mt-2",value="ACTUALIZAR") }} {% for
+                                    error in form.submit.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

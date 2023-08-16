@@ -1,0 +1,79 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          <strong>TYPE CONTRIBUTOR</strong>
+        </button>
+      </h2>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <div class="container">
+            <div class="my-50" style="margin-top: 20px">
+              <form
+                class="row g-3"
+                action="{{url_for('defined_codes.update_type_contributor',ccn_type_contributor=ccn_type_contributor) }}"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                {{ form.hidden_tag() }}
+                <div class="col-md-6">
+                  {{ form.contributor_code.label(class="text-dark") }} {{
+                  form.contributor_code(class="form-control") }} {% for error in
+                  form.contributor_code.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-6">
+                  {{ form.description_type_contributor.label(class="text-dark")
+                  }} {{ form.description_type_contributor(class="form-control")
+                  }} {% for error in form.description_type_contributor.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12">
+                  <a
+                    class="btn btn-secondary"
+                    href="/defined_code_type_contributor"
+                    >Return</a
+                  >
+                  {{ form.submit(class="btn btn-success",value="Update") }} {%
+                  for error in form.submit.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="modal-footer">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Odio a repellendus molestias natus sapiente totam incidunt
+                    animi, nostrum enim necessitatibus alias fugit mollitia
+                    libero eos obcaecati, cupiditate adipisci possimus. Libero.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

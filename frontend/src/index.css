@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.font-arial {
+    font-family: Arial, sans-serif;
+}

@@ -1,0 +1,120 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          <strong>DEMOGRAPHIC DATA</strong>
+        </button>
+      </h2>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <div class="container">
+            <div class="my-50" style="margin-top: 20px">
+              <form
+                class="row g-3"
+                action="{{url_for('db_employee.update_demographic_data',ccn_demographic_data=ccn_demographic_data) }}"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                {{ form.hidden_tag() }}
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.employee.label(class="mt-1") }} {{
+                  form.employee(class="form-control") }} {% for error in
+                  form.employee.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.birth_department.label(class="mt-1") }} {{
+                  form.birth_department(class="form-control") }} {% for error in
+                  form.birth_department.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.birth_city.label(class="mt-1") }} {{
+                  form.birth_city(class="form-control") }} {% for error in
+                  form.birth_city.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.department_residence.label(class="mt-1") }} {{
+                  form.department_residence(class="form-control") }} {% for error
+                  in form.department_residence.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.city_residence.label(class="mt-1") }} {{
+                  form.city_residence(class="form-control") }} {% for error in
+                  form.city_residence.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.ccn_schooling_level.label(class="mt-1") }} {{
+                  form.ccn_schooling_level(class="form-control") }} {%
+                  for error in form.ccn_schooling_level.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-12">
+                  {{ form.ccn_race.label(class="mt-1") }} {{
+                  form.ccn_race(class="form-control") }} {% for
+                  error in form.ccn_race.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12">
+                  <a
+                    class="btn btn-sm btn-secondary"
+                    href="/list_demographic_data"
+                    >CANCELAR</a
+                  >
+                  {{ form.submit(class="btn btn-sm btn-success",
+                  value="ACTUALIZAR" ) }} {% for error in form.submit.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="modal-footer">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Odio a repellendus molestias natus sapiente totam incidunt
+                    animi, nostrum enim necessitatibus alias fugit mollitia
+                    libero eos obcaecati, cupiditate adipisci possimus. Libero.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

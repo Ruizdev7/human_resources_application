@@ -1,0 +1,35 @@
+{% extends "home/base_home.html" %} {% block title %}{{ titulo }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='styles/home.css')}}" />
+{% endblock %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        <h2 class="text-center">SITIO EN CONSTRUCCIÓN</h2>
+    </div>
+    <div class="row ">
+        <div class="col-lg-4 mx-auto">
+            <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+                <div class="wheel"></div>
+                <div class="hamster">
+                    <div class="hamster__body">
+                        <div class="hamster__head">
+                            <div class="hamster__ear"></div>
+                            <div class="hamster__eye"></div>
+                            <div class="hamster__nose"></div>
+                        </div>
+                        <div class="hamster__limb hamster__limb--fr"></div>
+                        <div class="hamster__limb hamster__limb--fl"></div>
+                        <div class="hamster__limb hamster__limb--br"></div>
+                        <div class="hamster__limb hamster__limb--bl"></div>
+                        <div class="hamster__tail"></div>
+                    </div>
+                </div>
+                <div class="spoke"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

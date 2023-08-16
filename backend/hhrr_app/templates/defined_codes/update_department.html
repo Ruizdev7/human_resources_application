@@ -1,0 +1,49 @@
+{% extends "home/base_home.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="my-50" style="margin-top: 20px;">
+        <form class="row g-3" action="{{url_for('defined_codes.update_department',id_department=id_department) }}"
+            method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="col-md-6">
+                {{ form.id_department.label(class="text-dark") }}
+                {{ form.id_department(class="form-control",value=q.id_department) }}
+                {% for error in form.id_department.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6">
+                {{ form.descripcion_department.label(class="text-dark") }}
+                {{ form.descripcion_department(class="form-control",value=q.descripcion_department) }}
+                {% for error in form.descripcion_department.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6">
+                {{ form.ccn_country.label(class="text-dark") }}
+                {{ form.ccn_country(class="form-control",value=q.ccn_country) }}
+                {% for error in form.ccn_country.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6">
+                <a class="btn btn-secondary" href="/defined_code_department">Return</a>
+                {{ form.submit(class="btn btn-success",value="Update") }}
+                {% for error in form.submit.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="modal-footer">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio a repellendus molestias
+                    natus sapiente totam incidunt animi, nostrum enim necessitatibus alias fugit
+                    mollitia libero eos obcaecati, cupiditate adipisci possimus. Libero.</p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <strong>NUCLEO FAMILIAR</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="container">
+                        <div class="my-50" style="margin-top: 20px">
+                            <form class="row g-1"
+                                action="{{ url_for('db_employee.update_family_nucleus',ccn_family_nucleus=ccn_family_nucleus) }}"
+                                method="POST" enctype="multipart/form-data">
+                                {{ form.hidden_tag() }}
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.ccn_employee.label(class="mt-1") }} {{
+                                    form.ccn_employee(class="form-control") }} {% for error in
+                                    form.ccn_employee.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.ccn_marital_status.label(class="mt-1") }} {{
+                                    form.ccn_marital_status(class="form-control") }} {% for error in
+                                    form.ccn_marital_status.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.number_of_children.label(class="mt-1") }} {{
+                                    form.number_of_children(class="form-control") }} {% for error in
+                                    form.number_of_children.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.ccn_type_id.label(class="mt-1") }} {{
+                                    form.ccn_type_id(class="form-control") }} {% for error in
+                                    form.ccn_type_id.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.number_id.label(class="mt-1") }} {{
+                                    form.number_id(class="form-control") }} {% for error in
+                                    form.number_id.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.ccn_auto_perceived_gender.label(class="mt-1") }} {{
+                                    form.ccn_auto_perceived_gender(class="form-control") }} {% for error in
+                                    form.ccn_auto_perceived_gender.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-6">
+                                    {{ form.first_name.label(class="mt-1") }} {{
+                                    form.first_name(class="form-control") }} {%
+                                    for error in form.first_name.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.middle_name.label(class="mt-1") }} {{
+                                    form.middle_name(class="form-control") }} {% for
+                                    error in form.middle_name.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.first_last_name.label(class="mt-1") }} {{
+                                    form.first_last_name(class="form-control") }} {% for
+                                    error in form.first_last_name.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.second_last_name.label(class="mt-1") }} {{
+                                    form.second_last_name(class="form-control") }} {% for
+                                    error in form.second_last_name.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.date_of_birth.label(class="mt-1") }} {{
+                                    form.date_of_birth(class="form-control") }} {% for
+                                    error in form.date_of_birth.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-6 col-lg-6">
+                                    {{ form.ccn_schooling_level.label(class="mt-1") }} {{
+                                    form.ccn_schooling_level(class="form-control") }} {% for
+                                    error in form.ccn_schooling_level.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-md-12 col-lg-12">
+                                    <a href="/family_nucleus_details" class="btn btn-sm btn-secondary mt-2">CANCELAR</a>
+                                    {{ form.submit(class="btn btn-sm btn-success mt-2",value="ACTUALIZAR") }} {% for
+                                    error in form.submit.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

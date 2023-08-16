@@ -1,0 +1,154 @@
+{% extends "home/base_home.html" %} {% block title %}{{ titulo }}{% endblock %}
+{% block head %} {{ super() }} {% endblock %} {% block content %}
+
+<div class="container-fluid text-end justify-content-center align-items-lg-center">
+  <h4><strong>{{query_logged_user.employee_personal_email}}</strong></h4>
+  <h6><strong>{{query_logged_user.full_name_employee}}</strong></h6>
+</div>
+
+<!-- Button trigger modal -->
+<div class="container-fluid py-2">
+  <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    NEW EMPLOYEE
+  </button>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          CREATE A NEW EMPLOYEE
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <form class="row g-1" action="{{ url_for('db_employee.registerEmployee') }}" method="POST"
+              enctype="multipart/form-data">
+              {{ form.hidden_tag() }}
+
+              <div class="col-md-6 col-lg-6">
+                {{ form.ccn_type_id.label(class="mt-1") }} {{
+                form.ccn_type_id(class="form-control") }} {% for error in
+                form.ccn_type_id.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-6 col-lg-6">
+                {{ form.number_id_employee.label(class="mt-1") }} {{
+                form.number_id_employee(class="form-control") }} {% for error in
+                form.number_id_employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.first_name_employee.label(class="mt-1") }} {{
+                form.first_name_employee(class="form-control") }} {% for error
+                in form.first_name_employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.middle_name_employee.label(class="mt-1") }} {{
+                form.middle_name_employee(class="form-control") }} {% for error
+                in form.middle_name_employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.first_last_name_employee.label(class="mt-1") }} {{
+                form.first_last_name_employee(class="form-control") }} {% for
+                error in form.first_last_name_employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.second_last_name_employee.label(class="mt-1") }} {{
+                form.second_last_name_employee(class="form-control") }} {% for
+                error in form.second_last_name_employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-3">
+                {{ form.date_birth_employee.label(class="mt-1") }} {{
+                form.date_birth_employee(class="form-control") }} {% for error
+                in form.date_birth_employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-3">
+                {{ form.rh.label(class="mt-1") }} {{
+                form.rh(class="form-control") }} {% for error in form.rh.errors
+                %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.auto_perceived_gender.label(class="mt-1") }} {{
+                form.auto_perceived_gender(class="form-control") }} {% for error
+                in form.auto_perceived_gender.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.employee_personal_email.label(class="mt-1") }} {{
+                form.employee_personal_email(class="form-control") }} {% for
+                error in form.employee_personal_email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-6">
+                {{ form.employee_personal_cellphone.label(class="mt-1") }} {{
+                form.employee_personal_cellphone(class="form-control") }} {% for
+                error in form.employee_personal_cellphone.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12">
+                {{ form.img_employee.label(class="mt-1") }} {{
+                form.img_employee(class="form-control") }} {% for error in
+                form.img_employee.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+
+              <div class="col-md-12 col-lg-12">
+                {{ form.employee_password.label(class="mt-1") }} {{
+                form.employee_password(class="form-control mb-3") }} {% for
+                error in form.employee_password.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              <br />
+              <div class="col-md-12 col-lg-12">
+                {{ form.submit(class="btn btn-success") }} {% for error in
+                form.submit.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

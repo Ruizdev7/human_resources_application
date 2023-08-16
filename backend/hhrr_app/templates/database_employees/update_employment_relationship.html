@@ -1,0 +1,144 @@
+{% extends "home/base_home.html" %} {% block content %}
+
+<div class="container my-4">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          <strong>VINCULACION LABORAL</strong>
+        </button>
+      </h2>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <div class="container">
+            <div class="my-50" style="margin-top: 20px">
+              <form
+                class="row g-3"
+                action="{{url_for('db_employee.update_employment_relationship',ccn_employment_relationship=ccn_employment_relationship) }}"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                {{ form.hidden_tag() }}
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.employee.label(class="mt-1") }} {{
+                  form.employee(class="form-control") }} {% for error in
+                  form.employee.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.role.label(class="mt-1") }} {{
+                  form.role(class="form-control") }} {% for error in
+                  form.role.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.work_shift.label(class="mt-1") }} {{
+                  form.work_shift(class="form-control") }} {% for error in
+                  form.work_shift.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.type_relationship.label(class="mt-1") }} {{
+                  form.type_relationship(class="form-control") }} {% for error
+                  in form.type_relationship.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.binding_date.label(class="mt-1") }} {{
+                  form.binding_date(class="form-control") }} {% for error in
+                  form.binding_date.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.termination_date.label(class="mt-1") }} {{
+                  form.termination_date(class="form-control") }} {% for error in
+                  form.termination_date.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.pending_days_to_enjoy_for_holidays.label(class="mt-1") }} {{
+                  form.pending_days_to_enjoy_for_holidays(class="form-control") }} {% for error in
+                  form.pending_days_to_enjoy_for_holidays.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.employee_corporate_cellphone.label(class="mt-1") }} {{
+                  form.employee_corporate_cellphone(class="form-control") }} {%
+                  for error in form.employee_corporate_cellphone.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.employee_corporate_email.label(class="mt-1") }} {{
+                  form.employee_corporate_email(class="form-control") }} {% for
+                  error in form.employee_corporate_email.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                  {{ form.immediate_boss.label(class="mt-1") }} {{
+                  form.immediate_boss(class="form-control") }} {% for error in
+                  form.immediate_boss.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="col-md-12">
+                  <a
+                    class="btn btn-sm btn-secondary"
+                    href="/list_employment_relationship"
+                    >CANCELAR</a
+                  >
+                  {{ form.submit(class="btn btn-sm btn-success",
+                  value="ACTUALIZAR" ) }} {% for error in form.submit.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="modal-footer">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Odio a repellendus molestias natus sapiente totam incidunt
+                    animi, nostrum enim necessitatibus alias fugit mollitia
+                    libero eos obcaecati, cupiditate adipisci possimus. Libero.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
