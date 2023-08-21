@@ -16,31 +16,32 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ForgetPassword from "./pages/auth/ForgetPassword";
 import ChangePassword from "./pages/auth/ChangePassword";
-// Pages Aplication
 
-import UsersRoles from "./pages/admin_panel/UsersRoles";
+
+// Pages Application
 
 import Home from "./pages/home/Home";
 import AdminPanel from "./pages/admin_panel/AdminPanel";
-import { MainDashboard } from "./pages/dashboard/dashboard-hhrr/vizualization-components/DashboardsGraphics";
+import UsersRoles from "./pages/admin_panel/UsersRoles";
 import { AccessControl } from "./pages/security/AccessControl";
 import FamilyNucleus from "./pages/data_employees/FamilyNucleus";
-import AAP from "./pages/data_definite_codes/afiliation_data/AAP";
-import AFP from "./pages/data_definite_codes/afiliation_data/AFP";
-import EPS from "./pages/data_definite_codes/afiliation_data/EPS";
-import ARL from "./pages/data_definite_codes/afiliation_data/ARL";
-import CCF from "./pages/data_definite_codes/afiliation_data/CCF";
+import AAP from "./pages/data_definite_codes/social_security/AAP";
+import AFP from "./pages/data_definite_codes/social_security/AFP";
+import EPS from "./pages/data_definite_codes/social_security/EPS";
+import ARL from "./pages/data_definite_codes/social_security/ARL";
+import CCF from "./pages/data_definite_codes/social_security/CCF";
 import SocialSecurity from "./pages/data_employees/SocialSecurity";
 import HealthCondition from "./pages/data_employees/HealthCondition";
 import DemographicData from "./pages/data_employees/DemographicData";
 import RH from "./pages/data_definite_codes/personal_information/RH";
 import Race from "./pages/data_definite_codes/demographic_data/Race";
-import Roles from "./pages/data_definite_codes/data_relationship/Roles";
+import Roles from "./pages/data_definite_codes/employment_relationship/Roles";
 import Citys from "./pages/data_definite_codes/personal_information/Citys";
+import { DashboardPBI } from "./pages/dashboard/dashboard-hhrr/DashboarPBI";
 import DashboardHHRR from "./pages/dashboard/dashboard-hhrr/DashboardHHRR";
 import TypeID from "./pages/data_definite_codes/personal_information/TypeID";
 import SociodemographicData from "./pages/data_employees/SociodemographicData";
-import WorkShift from "./pages/data_definite_codes/data_relationship/WorkShift";
+import WorkShift from "./pages/data_definite_codes/employment_relationship/WorkShift";
 import AgeRange from "./pages/data_definite_codes/personal_information/AgeRange";
 import ReadBasicDataEmployee from "./pages/data_employees/ReadBasicDataEmployee";
 import Countrys from "./pages/data_definite_codes/personal_information/Countrys";
@@ -49,16 +50,17 @@ import HouseType from "./pages/data_definite_codes/sociodemographic_data/HouseTy
 import EmergencyContactDetails from "./pages/data_employees/EmergencyContactDetails";
 import Departments from "./pages/data_definite_codes/personal_information/Departments";
 import SchoolingLevel from "./pages/data_definite_codes/demographic_data/SchoolingLevel";
-import TypeAfiliation from "./pages/data_definite_codes/afiliation_data/TypeAffiliation";
+import TypeAfiliation from "./pages/data_definite_codes/employment_relationship/TypeAffiliation";
 import AutoPerceivedGender from "./pages/data_definite_codes/personal_information/Gender";
 import SubHouseType from "./pages/data_definite_codes/sociodemographic_data/SubhouseType";
-import TypeContribuidor from "./pages/data_definite_codes/afiliation_data/TypeContributor";
+import TypeContribuidor from "./pages/data_definite_codes/employment_relationship/TypeContributor";
 import MaritalStatus from "./pages/data_definite_codes/sociodemographic_data/MaritalStatus";
-import TypeRelationship from "./pages/data_definite_codes/data_relationship/TypeRelationship";
+import TypeRelationship from "./pages/data_definite_codes/employment_relationship/TypeRelationship";
 import { PerformanceEvaluation } from "./pages/events/performance evaluation/PerformanceEvaluation";
 import ListPerformanceEvaluation from "./pages/events/performance evaluation/ListPerformanceEvaluation";
 import PerformanceEvaluationDetail from "./pages/events/performance evaluation/PerformanceEvaluationDetail";
-import { DashboardPBI } from "./pages/dashboard/dashboard-hhrr/DashboarPBI";
+import { MainDashboard } from "./pages/dashboard/dashboard-hhrr/vizualization-components/DashboardsGraphics";
+
 // Page 404 Error
 import Error404 from "./pages/404";
 import AccessDenied from "./components/AccessDenied";
@@ -72,7 +74,8 @@ function App() {
 	const nombre_usuario_actual = useSelector((state) => state);
 
 	const current_user = nombre_usuario_actual.authAPISlice.current_user.ccn_employee || 0
-	const ccn_role = nombre_usuario_actual.authAPISlice.access_level.ccn_role || 1
+	//const ccn_role = nombre_usuario_actual.authAPISlice.access_level.ccn_role || 1
+	const ccn_role = 1
 
 	const {
 		data: list_rbac_by_role,

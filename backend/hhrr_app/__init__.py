@@ -14,7 +14,7 @@ cors = CORS()
 
 
 SWAGGER_URL = "/api_documentation"
-API_URL = "/static/swagger/swagger.json"
+API_URL = "http://localhost/swagger/swagger.json"
 SWAGGER_BLUEPRINT = get_swaggerui_blueprint(
     SWAGGER_URL, API_URL, config={"app_name": "hhrr_app"}
 )
@@ -79,7 +79,7 @@ def create_app(test_config=None):
         tbl_RBAC_modules,
         tbl_notification,
         tbl_trial_time_evaluation,
-        tbl_trial_time_evaluation_detail
+        tbl_trial_time_evaluation_detail,
     )
 
     if test_config is None:
@@ -194,14 +194,12 @@ def create_app(test_config=None):
     from hhrr_app.resources_api.resource_operative_performance_evaluation import (
         blueprint_api_operative_performance_evaluation,
     )
-    from hhrr_app.resources_api.resource_notification import (
-        blueprint_api_notification
-    )
+    from hhrr_app.resources_api.resource_notification import blueprint_api_notification
     from hhrr_app.resources_api.resource_trial_time_evolution import (
-        blueprint_api_trial_time_evaluation
+        blueprint_api_trial_time_evaluation,
     )
     from hhrr_app.resources_api.resource_trial_time_evolution_detail import (
-        blueprint_api_trial_time_evaluation_d
+        blueprint_api_trial_time_evaluation_d,
     )
 
     csfr.exempt(blueprint_api_authorization_employee)
@@ -300,15 +298,8 @@ def create_app(test_config=None):
     app.register_blueprint(
         blueprint_api_operative_performance_evaluation, url_prefix=""
     )
-    app.register_blueprint(
-        blueprint_api_notification, url_prefix=""
-    )
-    app.register_blueprint(
-        blueprint_api_trial_time_evaluation, url_prefix=""
-    )
-    app.register_blueprint(
-        blueprint_api_trial_time_evaluation_d, url_prefix=""
-    )
-    
+    app.register_blueprint(blueprint_api_notification, url_prefix="")
+    app.register_blueprint(blueprint_api_trial_time_evaluation, url_prefix="")
+    app.register_blueprint(blueprint_api_trial_time_evaluation_d, url_prefix="")
 
     return app

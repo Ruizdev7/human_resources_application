@@ -5,7 +5,7 @@ class Config:
 
     # SQLALCHEMY DATABASE CONFIGURATION
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@10.10.0.251:3306/hhrr_dev"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@127.0.0.1:3306/hhrr_app_dev"
 
 
 # PRODUCTION SERVER CONFIGURATION
